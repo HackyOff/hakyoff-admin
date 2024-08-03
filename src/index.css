@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-link {
+  @apply font-medium text-white transition-all hover:text-primary;
+}
+
+.footer-link {
+  @apply transition-all cursor-pointer text-primary sm:text-secondary hover:text-primary hover:underline;
+}
+
+.click {
+  @apply transition-all active:scale-95;
+}
+
+.active-nav {
+  @apply text-primary border-b-2  pb-[.5px] border-primary;
+}
+
+.input:placeholder {
+  @apply text-white;
+}

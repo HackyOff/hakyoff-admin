@@ -1,0 +1,165 @@
+{
+  "preloader": {
+    "loadingText": ["Carregando", "HakyOff"]
+  },
+  "testimonials": {
+    "title": "Expectativas"
+  },
+  "testimonialsData": [
+    {
+      "id": 1,
+      "img": "user_9",
+      "name": "Nadiusk Santana",
+      "content": "Espero por uma combinação de conteúdo abrangente, atualizado e acessível para todos os níveis de conhecimento.",
+      "role": "CyberTM | PORTUGAL"
+    },
+    {
+      "id": 2,
+      "img": "user_10",
+      "name": "João Barroso",
+      "content": "A Hakyoff deve manter contato próximo com seus alunos, incentivando-os a adquirir os conhecimentos oferecidos.",
+      "role": "Pentester | BRASIL"
+    },
+    {
+      "id": 3,
+      "img": "user_11",
+      "name": "Idalécio Silva",
+      "content": "Espero que se torne uma plataforma revolucionária para treinar profissionais e entusiastas em segurança cibernética.",
+      "role": "Project Manager | ANGOLA"
+    },
+    {
+      "id": 4,
+      "img": "user_12",
+      "name": "Jagat Singh",
+      "content": "Espero que a Hakyoff ofereça treinamentos inovadores e práticos, capacitando profissionais em cibersegurança.",
+      "role": "Security Researcher | ÍNDIA"
+    },
+    {
+      "id": 5,
+      "img": "user_13",
+      "name": "Joaquim Timóteo",
+      "content": "Espero que a Hakyoff forneça um ambiente prático e dinâmico para aprimorar as habilidades em cibersegurança.",
+      "role": "Cybersecurity Analyst | RÚSSIA"
+    },
+    {
+      "id": 6,
+      "img": "user_14",
+      "name": "Charlene Medida",
+      "content": "Espero que a Hakyoff simule cenários reais e imersivos, promovendo uma aprendizagem prática e eficaz.",
+      "role": "Machine Learn Engineer | CAMEROON"
+    }
+  ],
+  "benefits": {
+    "securityTrainingExpert": "Treinamentos ministrados por especialistas em Segurança da Informação.",
+    "directApplicationLabs": "Laboratórios práticos para aplicação direta do conhecimento adquirido.",
+    "freeCTFs": "Capture the Flags (CTFs) gratuitos para testar habilidades e competências.",
+    "regularUpdates": "Acesso a atualizações regulares sobre tendências, técnicas e ferramentas em."
+  },
+  "hero": {
+    "title": ["HakyOff", "HakyOff"],
+    "subtitle": {
+      "part1": "Eleve o seu mindset Hacker",
+      "part2": ""
+    },
+    "description": "A HakyOff é uma plataforma dedicada à treinamentos em Segurança da Informação, com foco principal em Segurança Ofensiva. Oferecemos uma variedade de treinamentos especializados, laboratórios práticos envolventes e uma comunidade ativa de profissionais e entusiastas da segurança cibernética.",
+    "stats": {
+      "labs": {
+        "count": "+50",
+        "label": ["Laboratórios", "Práticos"]
+      },
+      "instructors": {
+        "count": "+10",
+        "label": ["Instrutores", "Certificados"]
+      },
+      "support": {
+        "count": "24/7",
+        "label": ["Suporte", "Especializado"]
+      }
+    },
+    "buttons": {
+      "explore": "Explorar Academia",
+      "learn_more": "Saber mais"
+    }
+  },
+  "aboutUs": {
+    "title": "Quem Nós Somos?",
+    "description": "é uma Startup dedicada à treinamentos em Segurança da Informação, com foco principal em Segurança Ofensiva. Oferecemos uma variedade de treinamentos especializados, laboratórios práticos envolventes e uma comunidade ativa de profissionais e entusiastas da segurança cibernética. Buscamos proporcionar uma experiência de aprendizado imersiva e desafiadora que prepare os participantes para enfrentar os complexos desafios do mundo da segurança da informação.",
+    "button": "Confira os benefícios que temos para sí!",
+    "objectives": {
+      "title": "Nossos Objetivos",
+      "items": [
+        "Capacitar profissionais e entusiastas da segurança cibernética.",
+        "Cultivar uma comunidade engajada e colaborativa."
+      ]
+    },
+    "vision": {
+      "title": "Nossa Visão",
+      "items": [
+        "é ser reconhecida como uma plataforma líder mundial em treinamento em cibersegurança, impulsionando a excelência e a inovação..."
+      ]
+    }
+  },
+  "trainingSection": {
+    "title": "Treinamentos em Destaque"
+  },
+  "teamComponent": {
+    "title": "Nossa Equipa"
+  },
+  "navBarContent": {
+    "consultCertification": "Consultar certificação",
+    "academy": "Academia",
+    "comingSoon": "Brevemente",
+    "about": "Sobre",
+    "trainings": "Treinamentos",
+    "team": "Equipa",
+    "testimonials": "Expectativas",
+    "contacts": "Contactos"
+  },
+  "footer": {
+    "about": {
+      "title": "Sobre",
+      "who_we_are": "Quem somos",
+      "terms_and_policy": "Termos e políticas"
+    },
+    "contacts": {
+      "title": "Contactos",
+      "address": "Luanda, Angola",
+      "tel": "+244 9123 000 000",
+      "email": "HakyOff@gmail.com"
+    },
+    "social": {
+      "title": "Social",
+      "youtube": "Youtube",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "Linkedin"
+    },
+    "copyright": "HakyOff 2024 - Todos os Direitos Reservados."
+  },
+  "newsletter": {
+    "name_placeholder": "Nome",
+    "email_placeholder": "E-mail",
+    "error_message": "Insira pelo menos seu e-mail",
+    "button_text": "Enviar",
+    "success_message": "Recebemos o seu email e foi adicionado a Newsletter"
+  },
+  "modal": {
+    "title": "Consulte a sua Certificação",
+    "description": "Se você foi aluno da HakyOff, podes verificar a sua certificação a qualquer momento.",
+    "insert_reference": "Insira a referência",
+    "placeholder": "Ex: A3F9B6C2D4",
+    "consult_button": "Consultar",
+    "certificate_found": {
+      "title": "Certificação Encontrada",
+      "reference": "REF:",
+      "student_info": "Informações do Aluno",
+      "student_name": "Aluno:",
+      "training": "Treinamento:",
+      "issued_on": "Emitido em:",
+      "download_certificate": "Baixar certificado"
+    },
+    "searching": "Buscando",
+    "try_again": "Tente novamente",
+    "no_certificate_found": "Não foi encontrado nenhum certificado com esta referência {ref}, verifique a referência e tente novamente"
+  }
+}
