@@ -1,0 +1,489 @@
+@import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+.hacker {
+  font-family: "Anonymous Pro", monospace;
+}
+
+html,
+body {
+  overflow-x: hidden !important;
+}
+
+/* modal-animation.css */
+.modal-enter {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modal {
+  animation: 2s s ease;
+}
+
+@keyframes s {
+  0% {
+    transform: translateY(20px);
+  }
+}
+
+.modal-exit {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal-exit-active {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.z-100 {
+  z-index: 999999999999 !important;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+/*
+div {
+  overflow: hidden;
+}
+*/
+::-webkit-scrollbar {
+  width: 2px;
+  /* Largura da barra de rolagem */
+}
+
+::selection {
+  background: #ffc700;
+  color: black;
+}
+
+::-webkit-scrollbar-track {
+  background: #fff;
+  /* Cor de fundo da faixa da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  /* Cor do thumb */
+  border-radius: 100px !important;
+  /* Borda do thumb */
+}
+
+* {
+  scrollbar-width: thin;
+  /* Largura da barra de rolagem */
+  scrollbar-color: #ffc700 #fff;
+  /* Cor da barra de rolagem e do thumb */
+}
+
+.z-20 {
+  z-index: 9 !important;
+}
+
+@keyframes hacker-text {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-hacker-text {
+  animation: hacker-text 2s steps(30) 1 normal both;
+}
+
+.font-mono {
+  font-family: monospace;
+}
+
+.testimonials-container {
+  overflow: hidden;
+}
+
+.testimonials-carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.video {
+  border-radius: none !important;
+}
+
+.videos>.play-btns {
+  display: none !important;
+}
+
+.videos:hover .play-btns {
+  display: block !important;
+}
+
+.slick-dots li button::before {
+  background-color: white;
+  height: 0.3rem !important;
+  text-align: start !important;
+  width: 2rem !important;
+  margin-top: 2rem !important;
+}
+
+.slick-dots {
+  display: inline-flex !important;
+  gap: 10px !important;
+  margin-right: 2rem !important;
+  justify-content: start !important;
+  margin-top: 1rem !important;
+  flex-direction: row !important;
+}
+
+.testimonial {
+  width: 20rem;
+}
+
+.active {
+  display: inline-block;
+  margin: auto;
+}
+
+.prev-btn,
+.next-btn {
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #888;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.active-dot {
+  background-color: #333;
+}
+
+.react-glitch-wrapper {
+  font-weight: 300 !important;
+  font-size: 20px !important;
+  font-family: "Anonymous Pro", monospace !important;
+}
+
+.glitch {
+  position: relative;
+  margin: 0 auto;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  transform: scale3d(1, 1, 1);
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  background: transparent;
+  color: #fff;
+  clip: rect(0, 900px, 0, 0);
+}
+
+.glitch::before {
+  left: 8px;
+  text-shadow: 2px 0 green;
+  animation: glitch-effect 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: 4px;
+  text-shadow: -2px 0 red;
+  animation: glitch-effect 2s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-effect {
+  0% {
+    clip: rect(78px, 9999px, 34px, 0);
+  }
+
+  5% {
+    clip: rect(62px, 9999px, 4px, 0);
+  }
+
+  10% {
+    clip: rect(52px, 9999px, 70px, 0);
+  }
+
+  15% {
+    clip: rect(37px, 9999px, 39px, 0);
+  }
+
+  20% {
+    clip: rect(19px, 9999px, 33px, 0);
+  }
+
+  25% {
+    clip: rect(80px, 9999px, 14px, 0);
+  }
+
+  30% {
+    clip: rect(3px, 9999px, 40px, 0);
+  }
+
+  35% {
+    clip: rect(1px, 9999px, 61px, 0);
+  }
+
+  40% {
+    clip: rect(46px, 9999px, 69px, 0);
+  }
+
+  45% {
+    clip: rect(26px, 9999px, 38px, 0);
+  }
+
+  50% {
+    clip: rect(80px, 9999px, 38px, 0);
+  }
+
+  55% {
+    clip: rect(63px, 9999px, 48px, 0);
+  }
+
+  60% {
+    clip: rect(16px, 9999px, 35px, 0);
+  }
+
+  65% {
+    clip: rect(65px, 9999px, 16px, 0);
+  }
+
+  70% {
+    clip: rect(80px, 9999px, 44px, 0);
+  }
+
+  75% {
+    clip: rect(25px, 9999px, 14px, 0);
+  }
+
+  80% {
+    clip: rect(75px, 9999px, 54px, 0);
+  }
+
+  85% {
+    clip: rect(18px, 9999px, 22px, 0);
+  }
+
+  90% {
+    clip: rect(56px, 9999px, 63px, 0);
+  }
+
+  95% {
+    clip: rect(31px, 9999px, 15px, 0);
+  }
+
+  100% {
+    clip: rect(67px, 9999px, 43px, 0);
+  }
+}
+
+/* src/App.css */
+@keyframes glitch {
+  0% {
+    clip: rect(0, 9999px, 0, 0);
+  }
+
+  10% {
+    clip: rect(150px, 9999px, 150px, 0);
+  }
+
+  20% {
+    clip: rect(60px, 9999px, 60px, 0);
+  }
+
+  30% {
+    clip: rect(80px, 9999px, 80px, 0);
+  }
+
+  40% {
+    clip: rect(100px, 9999px, 100px, 0);
+  }
+
+  50% {
+    clip: rect(120px, 9999px, 120px, 0);
+  }
+
+  60% {
+    clip: rect(140px, 9999px, 140px, 0);
+  }
+
+  70% {
+    clip: rect(160px, 9999px, 160px, 0);
+  }
+
+  80% {
+    clip: rect(180px, 9999px, 180px, 0);
+  }
+
+  90% {
+    clip: rect(200px, 9999px, 200px, 0);
+  }
+
+  100% {
+    clip: rect(220px, 9999px, 220px, 0);
+  }
+}
+
+.bg-hacking {
+  background: url("https://www.toptal.com/designers/subtlepatterns/patterns/memphis-mini.png");
+  animation: glitch 1s infinite;
+}
+
+.login-bg {
+  background: linear-gradient(90deg, #000000f9, #000000f9),
+    url(../assets/bgs/bg-hack.gif);
+}
+
+.sidebar ul li {
+  @apply active:bg-primary active:text-white;
+}
+
+.click-sidebar {
+  @apply transition-all active:bg-primary active:scale-95 hover:bg-gray-700;
+}
+
+.tox-statusbar {
+  display: none !important;
+}
+
+/* Exemplo de classes para cores de status */
+.status-not-answered {
+  color: #f59e0b;
+  /* Cor para status 'Não Respondido' */
+}
+
+.status-pending {
+  color: #2b6cb0;
+  /* Cor para status 'Pendente' */
+}
+
+.status-resolved {
+  color: #38a169;
+  /* Cor para status 'Resolvido' */
+}
+
+.hid div {
+  overflow: hidden !important;
+}
+
+.scroll div {
+  overflow-y: auto !important;
+}
+
+.scrolll div:hover {
+  overflow-y: auto !important;
+}
+
+.input_card {
+  @apply w-full px-2 py-2 my-auto bg-transparent border outline-none;
+}
+
+/* styles.css */
+@keyframes glitchh {
+  0% {
+    transform: translate(0);
+  }
+
+  20% {
+    transform: translate(-5px, 5px);
+  }
+
+  40% {
+    transform: translate(-5px, -5px);
+  }
+
+  60% {
+    transform: translate(5px, 5px);
+  }
+
+  80% {
+    transform: translate(5px, -5px);
+  }
+
+  100% {
+    transform: translate(0);
+  }
+}
+
+.hacker-div {
+  position: relative;
+  overflow: hidden;
+  /* animation: glitchh 18s linear;*/
+}
+
+.hacker-div::before,
+.hacker-div::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  z-index: -1;
+}
+
+.hacker-div::before {
+  animation: glitchh 30s infinite;
+  clip: rect(0, 100%, 20%, 0);
+}
+
+.hacker-div::after {
+  animation: glitchh 5s infinite reverse;
+  clip: rect(80%, 100%, 100%, 0);
+  background: #e79f0310;
+}
+
+.list-c {
+
+  background: linear-gradient(90deg, #000000ce, #2b6cb0);
+  height: 100vh;
+
+}
+
+.notallowed {
+  cursor: not-allowed;
+}
+
+.accordion-button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+  cursor: pointer;
+}
+
+.accordion-content {
+  padding: 10px;
+  border-top: 1px solid #ddd;
+
+}
+
+.lab-bg {
+  background: linear-gradient(90deg, #cc9c00, #dfb703e5, #df8e03fa), url('../../assets/bgs/bg-lab-challeng.png');
+}

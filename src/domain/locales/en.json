@@ -1,0 +1,164 @@
+{
+  "preloader": {
+    "loadingText": ["Loading", "HakyOff"]
+  },
+  "benefits": {
+    "securityTrainingExpert": "Trainings conducted by Information Security experts.",
+    "directApplicationLabs": "Practical labs for direct application of acquired knowledge.",
+    "freeCTFs": "Free Capture the Flags (CTFs) to test skills and competencies.",
+    "regularUpdates": "Access to regular updates on trends, techniques, and tools in."
+  },
+  "testimonialsData": [
+    {
+      "id": 1,
+      "img": "user_9",
+      "name": "Nadiusk Santana",
+      "content": "I hope for a combination of comprehensive, up-to-date, and accessible content for all levels of knowledge.",
+      "role": "CyberTM | PORTUGAL"
+    },
+    {
+      "id": 2,
+      "img": "user_10",
+      "name": "João Barroso",
+      "content": "Hakyoff should maintain close contact with its students, encouraging them to acquire the knowledge offered.",
+      "role": "Pentester | BRASIL"
+    },
+    {
+      "id": 3,
+      "img": "user_11",
+      "name": "Idalécio Silva",
+      "content": "I hope it becomes a revolutionary platform for training professionals and enthusiasts in cybersecurity.",
+      "role": "Project Manager | ANGOLA"
+    },
+    {
+      "id": 4,
+      "img": "user_12",
+      "name": "Jagat Singh",
+      "content": "I hope Hakyoff offers innovative and practical training, empowering professionals in cybersecurity.",
+      "role": "Security Researcher | ÍNDIA"
+    },
+    {
+      "id": 5,
+      "img": "user_13",
+      "name": "Joaquim Timóteo",
+      "content": "I hope Hakyoff provides a practical and dynamic environment to enhance cybersecurity skills.",
+      "role": "Cybersecurity Analyst | RÚSSIA"
+    },
+    {
+      "id": 6,
+      "img": "user_14",
+      "name": "Charlene Medida",
+      "content": "I hope Hakyoff simulates real and immersive scenarios, promoting practical and effective learning.",
+      "role": "Machine Learn Engineer | CAMEROON"
+    }
+  ],
+  "hero": {
+    "title": ["HakyOff", "HakyOff"],
+    "subtitle": {
+      "part1": "Elevate Your Hacker Mindset",
+      "part2": ""
+    },
+    "description": "HakyOff is a platform dedicated to Information Security training, with a primary focus on Offensive Security. We offer a variety of specialized training, engaging practical labs, and an active community of cybersecurity professionals and enthusiasts.",
+    "stats": {
+      "labs": {
+        "count": "+50",
+        "label": ["Practical", "Labs"]
+      },
+      "instructors": {
+        "count": "+10",
+        "label": ["Certified", "Instructors"]
+      },
+      "support": {
+        "label": ["Support", " Team "]
+      }
+    },
+    "buttons": {
+      "explore": "Explore Academy",
+      "learn_more": "Learn More"
+    }
+  },
+  "testimonials": {
+    "title": "Expectations"
+  },
+  "aboutUs": {
+    "title": "Who We Are?",
+    "description": "is a Startup dedicated to Information Security training, with a primary focus on Offensive Security. We offer a variety of specialized training, engaging practical labs, and an active community of cybersecurity professionals and enthusiasts. We strive to provide an immersive and challenging learning experience that prepares participants to face the complex challenges of the information security world.",
+    "button": "Check out the benefits we have for you!",
+    "objectives": {
+      "title": "Our Objectives",
+      "items": [
+        "Empower cybersecurity professionals and enthusiasts.",
+        "Cultivate an engaged and collaborative community."
+      ]
+    },
+    "vision": {
+      "title": "Our Vision",
+      "items": [
+        "is to be recognized as a world-leading platform in cybersecurity training, driving excellence and innovation..."
+      ]
+    }
+  },
+  "navBarContent": {
+    "consultCertification": "Consult Certification",
+    "academy": "Academy",
+    "comingSoon": "Coming Soon",
+    "about": "About",
+    "trainings": "Trainings",
+    "team": "Team",
+    "testimonials": "Testimonials",
+    "contacts": "Contacts"
+  },
+  "trainingSection": {
+    "title": "Featured Trainings"
+  },
+  "teamComponent": {
+    "title": "Our Team"
+  },
+  "footer": {
+    "about": {
+      "title": "About",
+      "who_we_are": "Who we are",
+      "terms_and_policy": "Terms and policies"
+    },
+    "contacts": {
+      "title": "Contacts",
+      "address": "Luanda, Angola",
+      "tel": "+244 9123 000 000",
+      "email": "geral@hakyoff.com"
+    },
+    "social": {
+      "title": "Social",
+      "youtube": "Youtube",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "Linkedin"
+    },
+    "copyright": "2024 HakyOff - All Rights Reserved."
+  },
+  "newsletter": {
+    "name_placeholder": "Name",
+    "email_placeholder": "Email",
+    "error_message": "Please enter at least your email",
+    "button_text": "Submit",
+    "success_message": "We have received your email and it has been added to the Newsletter"
+  },
+  "modal": {
+    "title": "Check Your Certification",
+    "description": "If you were a student at HakyOff, you can check your certification at any time.",
+    "insert_reference": "Enter the reference",
+    "placeholder": "Ex: A3F9B6C2D4",
+    "consult_button": "Check",
+    "certificate_found": {
+      "title": "Certificate Found",
+      "reference": "REF:",
+      "student_info": "Student Information",
+      "student_name": "Student:",
+      "training": "Training:",
+      "issued_on": "Issued on:",
+      "download_certificate": "Download certificate"
+    },
+    "searching": "Searching",
+    "try_again": "Try again",
+    "no_certificate_found": "No certificate found with this reference, please check the reference and try again"
+  }
+}
