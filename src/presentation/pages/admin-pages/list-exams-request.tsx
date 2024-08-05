@@ -32,14 +32,14 @@ export const ExamRequestsList: React.FC = () => {
 
             <h2 className='text-2xl font-bold'>Pedidos de Exames</h2>
             <br />
-            <ul className='grid grid-cols-2'>
+            <ul className='grid gap-6 grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'>
                 {examRequests.map((examRequest) => (
-                    <li key={examRequest.id} className='bg-slate-100 py-4 px-6 rounded-lg'>
+                    <li key={examRequest.id} className='bg-white py-4 px-6 rounded-lg'>
                         <strong>Treinamento:</strong> {examRequest.courseName}<br />
                         <strong>Estudante:</strong> {examRequest.studentName}<br />
                         <strong>Data do Pedido:</strong> {DateUtils.formatDateTimeToPTT(new Date(examRequest.requestDate))}<br />
                         {/* Adicione mais detalhes conforme necessário */}
-                        <hr />
+
                     </li>
                 ))}
             </ul>
