@@ -166,7 +166,7 @@ export const ProfilePage: React.FC = () => {
       <Navbar />
       <Sidebar toggleSidebar={toggleSidebar} toggleDarkMode={toggleDarkMode} darkMode={darkMode} isOpen={isOpen} />
 
-      <div className={`min-h-screen p-4 sm:pt-20 pt-10 ${isOpen ? 'sm:ml-[14rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
+      <div className={`min-h-screen p-4 sm:pt-20 pt-10 ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
         <div style={{ background: `url(${bg.bg_student}) center center`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat' }} className="relative dark:border-2 dark:border-primary w-full h-[14rem] overflow-visible rounded-2xl">
           <div className="px-5 sm:flex-row flex-col dark:border-x-2 dark:border-primary flex gap-5 -bottom-[3rem] py-4 absolute w-[95%] mx-auto rounded-3xl left-0 right-0 backdrop-blur-xl bg-white/60 shadow-md">
             <div className='flex gap-4'>

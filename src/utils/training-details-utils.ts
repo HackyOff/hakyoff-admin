@@ -118,7 +118,7 @@ export const handlePaymentConfirm = async ({
     setShowPaymentModal,
 }: HandlePaymentConfirmParams): Promise<void> => {
     try {
-        const userDocRef = doc(db, 'alunos', currentUser!.uid);
+        const userDocRef = doc(db, 'admins', currentUser!.uid);
         const userCoursesRef = doc(userDocRef, 'courses', id_course);
 
         let paymentDetails: any = {

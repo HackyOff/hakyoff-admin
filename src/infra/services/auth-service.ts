@@ -21,7 +21,7 @@ export const registerUser = async (user: IAluno): Promise<void> => {
 
     const userId = userCredential.user.uid;
 
-    await setDoc(doc(db, "alunos", userId), {
+    await setDoc(doc(db, "admins", userId), {
       displayName: user.nome,
       email: user.email,
       phoneNumber: user.telefone,
@@ -79,7 +79,7 @@ export const loginUser = async (
     }
 
     // Busca os dados do usuário no Firestore com base no UID
-    const userDocRef = firestoreDoc(db, `alunos/${auth.currentUser?.uid}`);
+    const userDocRef = firestoreDoc(db, `admins/${auth.currentUser?.uid}`);
     const userDocSnap = await getDoc(userDocRef);
 
     if (userDocSnap.exists()) {
@@ -157,15 +157,15 @@ export const loginUserWithGoogle = async (): Promise<void> => {
         console.log("Added user to 'hacking' collection");
       }
 
-      // Fetch user data from 'alunos' collection
+      // Fetch user data from 'admins' collection
       const userDocRef = firestoreDoc(db, `alunos/${userId}`);
       const userDocSnap = await getDoc(userDocRef);
 
       if (userDocSnap.exists()) {
         const userData = userDocSnap.data();
-        console.log("User data from 'alunos' collection:", userData);
+        console.log("User data from 'admins' collection:", userData);
       } else {
-        console.error("User document not found in 'alunos' collection");
+        console.error("User document not found in 'admins' collection");
       }
     } else {
       console.error("Current user not found");

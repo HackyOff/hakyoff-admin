@@ -49,7 +49,7 @@ function Trainings() {
         <div className={`${userSettings.darkMode ? 'dark' : ''}`}>
             <Navbar />
             <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} />
-            <div className={`min-h-screen hid p-4 sm:pt-20 ${isOpen ? 'sm:ml-[14rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
+            <div className={`min-h-screen hid p-4 sm:pt-20 ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
                 <section id="trainings" className="mx-2">
                     <HakyOffSquare className='sm:mt-6' />
                     <h2 className="font-semibold dark:text-white hacker text-xl sm:text-3xl mt-[1rem]">Treinamentos Disponíveis</h2>

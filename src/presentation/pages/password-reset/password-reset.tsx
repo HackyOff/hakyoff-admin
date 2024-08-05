@@ -20,13 +20,13 @@ export const PasswordResetRequest: React.FC = () => {
         //console.log('Email fornecido:', email);  // Log para depuração
 
         try {
-            // Verificar se o e-mail existe na coleção 'alunos'
-            const userRef = collection(db, 'alunos');
+            // Verificar se o e-mail existe na coleção 'admins'
+            const userRef = collection(db, 'admins');
             const q = query(userRef, where('email', '==', email));
             const querySnapshot = await getDocs(q);
 
             if (querySnapshot.empty) {
-                // E-mail não encontrado na coleção 'alunos'
+                // E-mail não encontrado na coleção 'admins'
                 setMessage('');
                 setError('O e-mail fornecido não foi encontrado.');
             } else {

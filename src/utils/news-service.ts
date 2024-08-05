@@ -14,7 +14,7 @@ export const sendNewsEmail = async (to: string, title: string, content: string, 
 
 // Função para buscar alunos com notificações ativadas e enviar e-mails
 export const notifyStudents = async (title: string, content: string, cover: string, idNews: string) => {
-    const studentsCollection = firebase.firestore().collection('alunos');
+    const studentsCollection = firebase.firestore().collection('admins');
     const snapshot = await studentsCollection.get();
 
     console.log(`Found ${snapshot.docs.length} students`);

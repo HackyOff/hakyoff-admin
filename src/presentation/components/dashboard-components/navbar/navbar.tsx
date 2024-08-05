@@ -36,10 +36,10 @@ export const Navbar: React.FC = () => {
     return (
         <div className="fixed dark:border-b border-primary/50 left-0 z-50 w-full p-4 overflow-visible text-white bg-gray-900 shadow-md overl">
             <div className="flex items-center justify-between overflow-visible">
-                <h1 className="flex font-bold">
+                <h1 className="flex my-auto font-bold">
                     <img src={logos.logo_2} className='sm:w-[7em] w-[5.5em] my-auto' alt="" />
                     <span className="mx-2  sm:text-md text-sm  my-auto">|</span>
-                    <b className="my-auto sm:text-md text-xs text-primary">ACADEMY</b>
+                    <b className="mt-[.85em] sm:text-md text-xs text-primary">ADMIN PANEL</b>
                 </h1>
                 <div className="flex items-center space-x-2 sm:space-x-4">
                     <div onClick={() => { navigate(ROUTE_PROFILE); sessionStorage.setItem('menu', '') }} className="flex gap-2 cursor-pointer">
@@ -85,7 +85,7 @@ export const Navbar: React.FC = () => {
                             </div>
                         }
                     </div>
-                    <p className="relative w-6 h-6 overflow-visible cursor-pointer">
+                    <p className="relative hidden w-6 h-6 overflow-visible cursor-pointer">
                         <p title='Configurações' onClick={() => setOpenSettings(!openSettings)}>
                             <FaCog className='text-2xl transition-all hover:rotate-45 hover:text-primary' />
 

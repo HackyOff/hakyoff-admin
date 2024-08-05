@@ -163,8 +163,8 @@ export function LoginPage() {
             <div className="relative lg:mt-24 z-10 w-full max-w-md p-8 text-white border rounded-lg shadow-lg bg-black/50 border-white/15 bg-opacity-90">
                 <center>
                     <img src={logos.logo_2} className="w-[8rem]" alt="" />
-                    <h1 className="text-xl font-bold text-white sm:text-2xl glitch 2xl:text-6xl hacker" data-text={isLogin ? 'Login' : 'Cadastro'}>
-                        {isLogin ? 'Login' : 'Cadastro'}
+                    <h1 className="text-xl font-bold text-white sm:text-2xl glitch 2xl:text-6xl hacker" data-text={'Admin'}>
+                        Admin
                     </h1>
                 </center>
                 {!isLogin && (
@@ -276,11 +276,11 @@ export function LoginPage() {
                         </>
                     )}
                 </button>
-                <button onClick={handleGoogleLogin} className="flex justify-center w-full gap-2 px-4 py-2 mx-auto mt-4 text-center transition duration-150 border rounded-lg border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow">
+                <button onClick={handleGoogleLogin} className="flex hidden justify-center w-full gap-2 px-4 py-2 mx-auto mt-4 text-center transition duration-150 border rounded-lg border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow">
                     <img className="w-6 h-6" src="https://www.svgrepo.com/show/475656/google-color.svg" loading="lazy" alt="google logo" />
                     <span className="text-gray-300">  {isLogin ? 'Login' : 'Cadastrar'} com Google</span>
                 </button>
-                <p className="mt-4 text-center">
+                <p className="mt-4 hidden text-center">
                     {
                         isLogin &&
                         <>

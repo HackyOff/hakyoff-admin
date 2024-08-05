@@ -21,7 +21,7 @@ export const ROUTE_RESET_PASS_CONFIRM = "/reset-password-confirm";
 // Importando os ícones
 import { IconType } from "react-icons";
 import { FaFlagCheckered, FaHome } from "react-icons/fa";
-import { FaTrophy } from "react-icons/fa6";
+import { FaTrophy, FaUser } from "react-icons/fa6";
 import { IoNewspaperOutline, IoTicketSharp } from "react-icons/io5";
 import { MdOutlinePlayLesson } from "react-icons/md";
 import { SiHackaday, SiVirtualbox } from "react-icons/si";
@@ -40,6 +40,7 @@ export const SideBarUtils: ISideBar[] = [
     text: "Inicial",
     icon: FaHome,
   },
+  /*
   {
     link: ROUTE_VIRTUAL_LABS,
     text: "Lab. Virtual",
@@ -54,17 +55,18 @@ export const SideBarUtils: ISideBar[] = [
     link: ROUTE_MY_CERTIFICATES,
     text: "Meus Certificados",
     icon: FaTrophy,
-  },
+  },*/
   {
     link: ROUTE_TRAININGS,
     text: "Treinamentos",
     icon: MdOutlinePlayLesson,
   },
+  /*
   {
     link: ROUTE_MY_TRAININGS,
     text: "Meus Treinamentos",
     icon: MdOutlinePlayLesson,
-  },
+  },*/
   {
     link: ROUTE_NEWS,
     text: "Notícias",
@@ -77,8 +79,8 @@ export const SideBarUtils: ISideBar[] = [
   },
   {
     link: ROUTE_HACKING,
-    text: "Hacking",
-    icon: SiHackaday,
+    text: "Alunos",
+    icon: FaUser,
   },
   /*
   {

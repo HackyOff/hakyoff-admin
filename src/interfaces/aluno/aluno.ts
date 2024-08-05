@@ -7,4 +7,7 @@ export interface IAluno {
   cod_aluno: number;
   photo: string;
   country: string;
+  company: string
+  role: string
+  address: string
 }

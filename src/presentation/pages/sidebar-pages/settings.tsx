@@ -39,7 +39,7 @@ export const Settings: React.FC = () => {
         <div className={`${userSettings.darkMode ? 'dark' : ''}`}>
             <Navbar />
             <Sidebar toggleSidebar={toggleSidebar} darkMode={false} isOpen={isOpen} />
-            <div className={`min-h-screen p-4 pt-20 ${isOpen ? 'sm:ml-[14rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
+            <div className={`min-h-screen p-4 pt-20 ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
                 <br />
                 <div className="flex w-full gap-4 px-5 py-6 bg-white rounded-lg shadow dark:bg-white/80">
                     <FaCog className='my-auto text-xl text-yellow-600' />

@@ -24,7 +24,7 @@ export const VirtualLabs: React.FC = () => {
     <div className={`${userSettings.darkMode ? 'dark' : ''}`}>
       <Navbar />
       <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} /> {/* Passar isOpen para Sidebar */}
-      <div className={`min-h-screen p-4 sm:pt-20 ${isOpen ? 'sm:ml-[14rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
+      <div className={`min-h-screen p-4 sm:pt-20 ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
 
         <br />
         <div className="flex dark:bg-slate-100/20 dark:text-white justify-between w-full px-5 py-6 bg-white rounded-lg shadow">

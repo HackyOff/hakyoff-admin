@@ -38,7 +38,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ toggleSidebar, isOpen }) => {
     }
 
     return (
-        <div className={`sm:fixed sidebar flex sm:flex-col top-0 hover:overflow-y-auto left-0 sm:h-full ${isOpen ? 'sm:w-[14rem]' : 'sm:w-16'} bg-white dark:bg-gray-800 text-white transition-all duration-300`}>
+        <div className={`sm:fixed sidebar flex sm:flex-col top-0 hover:overflow-y-auto left-0 sm:h-full ${isOpen ? 'sm:w-[10rem]' : 'sm:w-16'} bg-white dark:bg-gray-800 text-white transition-all duration-300`}>
             <div className="flex hidden sm:block items-center justify-between p-4">
                 <h1 className={`text-lg font-bold ${!isOpen && 'hiddenn'}`}>Dashboard </h1>
 

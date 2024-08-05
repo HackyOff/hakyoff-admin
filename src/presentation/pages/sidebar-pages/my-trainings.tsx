@@ -41,7 +41,7 @@ export const MyTrainings: React.FC = () => {
         <div className={`${userSettings.darkMode ? 'dark' : ''}`}>
             <Navbar />
             <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} />
-            <div className={`min-h-screen p-4 pt-20 ${isOpen ? 'sm:ml-[14rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
+            <div className={`min-h-screen p-4 pt-20 ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
                 <br />
                 <div className="flex justify-between w-full px-5 py-6 bg-white rounded-lg shadow  dark:bg-slate-100/10 dark:text-white">
                     <h2 className="text-3xl font-bold hacker">Seus treinamentos</h2>

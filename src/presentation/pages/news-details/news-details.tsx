@@ -64,7 +64,7 @@ export const NewsDetailsPage: React.FC = () => {
             <div className={`${userSettings.darkMode ? 'dark' : ''}`}>
                 <Navbar />
                 <Sidebar   toggleSidebar={toggleSidebar} isOpen={isOpen} /> {/* Passar isOpen para Sidebar */}
-                <div className={`min-h-screen hid p-4 sm:pt-20  ${isOpen ? 'sm:ml-[14rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
+                <div className={`min-h-screen hid p-4 sm:pt-20  ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
                     <div className=' pb-[10rem] w-full'>
 
                         <br />

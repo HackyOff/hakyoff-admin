@@ -8,7 +8,8 @@ import { extra } from '../../../utils/image-exporter';
 import { IHackerScore } from '@/domain/models/score-model';
 import { useAuth } from '@/context/auth-context';
 import { LoaderText } from '@/presentation/components/dashboard-components/loader-text/loader-text';
-import { fetchHackersAll } from '@/services/fetch-haclers';
+import { fetchAlunosAll } from '@/services/fetch-haclers';
+import { IAluno } from '@/interfaces/aluno/aluno';
 
 export const Hacking: React.FC = () => {
 
@@ -16,12 +17,12 @@ export const Hacking: React.FC = () => {
     const { userSettings } = useAuth(); // Adicione a função de logout aqui
     const [loading, setLoading] = useState(true);
     const [isOpen, setIsOpen] = useState(true); // Definir o estado isOpen aqui
-    const [hackers, setHackers] = useState<IHackerScore[]>([]);
+    const [hackers, setHackers] = useState<IAluno[]>([]);
 
 
 
     const fetchHackers = useMemo(() => {
-        return () => fetchHackersAll(setLoading, setHackers);
+        return () => fetchAlunosAll(setLoading, setHackers);
     }, []);
 
     useEffect(() => {
@@ -41,7 +42,7 @@ export const Hacking: React.FC = () => {
         <div className={`${userSettings.darkMode ? 'dark' : ''}`}>
             <Navbar />
             <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} /> {/* Passar isOpen para Sidebar */}
-            <div className={`min-h-screen hid p-4 sm:pt-20 ${isOpen ? 'sm:ml-[14rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
+            <div className={`min-h-screen hid p-4 sm:pt-20 ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
 
 
 

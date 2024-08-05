@@ -127,7 +127,7 @@ export const MyCertificates: React.FC = () => {
     <div className={`${userSettings.darkMode ? 'dark' : ''}`}>
       <Navbar />
       <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} />
-      <div className={`min-h-screen p-4 sm:pt-20 ${isOpen ? 'sm:ml-[14rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
+      <div className={`min-h-screen p-4 sm:pt-20 ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
         <div className="flex sm:mt-10 dark:bg-slate-100/10 dark:text-white justify-between w-full px-5 py-6 bg-white rounded-lg shadow">
           <h2 className="sm:text-3xl text-xl font-bold hacker">Meus Certificados</h2>
         </div>

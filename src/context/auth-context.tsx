@@ -55,7 +55,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren<object>> = ({ childr
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user && user.emailVerified) {
         try {
-          const userRef = collection(db, 'alunos');
+          const userRef = collection(db, 'admins');
           const q = query(userRef, where('email', '==', user.email));
           const querySnapshot = await getDocs(q);
 
@@ -79,7 +79,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren<object>> = ({ childr
             });
 
             // Carregar as configurações do usuário ao autenticar
-            const userSettingsRef = doc(db, 'alunos', user.uid, 'settings', 'general');
+            const userSettingsRef = doc(db, 'admins', user.uid, 'settings', 'general');
             const settingsDoc = await getDoc(userSettingsRef);
             if (settingsDoc.exists()) {
               setUserSettings(settingsDoc.data() as UserSettings);
@@ -140,7 +140,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren<object>> = ({ childr
       }
 
       // Consultar o documento usando o campo email
-      const querySnapshot = await getDocs(query(collection(db, 'alunos'), where('email', '==', currentUser.email)));
+      const querySnapshot = await getDocs(query(collection(db, 'admins'), where('email', '==', currentUser.email)));
       if (!querySnapshot.empty) {
         const userDoc = querySnapshot.docs[0];
 
@@ -179,7 +179,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren<object>> = ({ childr
     if (!currentUser) return;
 
     try {
-      const userSettingsRef = doc(db, 'alunos', currentUser.uid, 'settings', 'general');
+      const userSettingsRef = doc(db, 'admins', currentUser.uid, 'settings', 'general');
       await setDoc(userSettingsRef, { ...userSettings, ...updatedSettings }, { merge: true });
       setUserSettings(prevSettings => ({
         ...prevSettings,

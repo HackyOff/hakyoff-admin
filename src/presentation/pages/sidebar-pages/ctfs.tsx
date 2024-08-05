@@ -55,7 +55,7 @@ export const Ctfs: React.FC = () => {
         const fetchUserCtfs = async () => {
             if (currentUser) {
                 try {
-                    const userCtfsCollection = firebase.firestore().collection('alunos').doc(currentUser.uid).collection('resolvedCtfs');
+                    const userCtfsCollection = firebase.firestore().collection('admins').doc(currentUser.uid).collection('resolvedCtfs');
                     const snapshot = await userCtfsCollection.get();
                     const userCtfsData = snapshot.docs.map(doc => doc.id);
                     setUserCtfs(userCtfsData);
@@ -91,7 +91,7 @@ export const Ctfs: React.FC = () => {
         if (flag === selectedCTF.flag) {
             try {
                 // Atualiza a subcoleção de CTFs resolvidos do usuário
-                const userCtfsCollection = firebase.firestore().collection('alunos').doc(currentUser.uid).collection('resolvedCtfs');
+                const userCtfsCollection = firebase.firestore().collection('admins').doc(currentUser.uid).collection('resolvedCtfs');
                 if (typeof selectedCTF.id === 'string') {
                     await userCtfsCollection.doc(selectedCTF.id).set({
                         ctfName: selectedCTF.title,
@@ -168,7 +168,7 @@ export const Ctfs: React.FC = () => {
         <div className={`${userSettings.darkMode ? 'dark' : ''} `}>
             <Navbar />
             <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} />
-            <div className={`min-h-screen p-4 sm:pt-20 hid ${isOpen ? 'sm:ml-[14rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
+            <div className={`min-h-screen p-4 sm:pt-20 hid ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
                 <div>
                     <h2 className='mt-4 sm:text-4xl text-2xl font-bold tracking-wider hacker dark:text-white'>Desafios CTFS</h2>
                     <br />

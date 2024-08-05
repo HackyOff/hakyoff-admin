@@ -22,7 +22,7 @@ export const ListLabs: React.FC = () => {
 
       try {
         // Recupera os Treinamentos comprados pelo usuário
-        const userDocRef = db.collection('alunos').doc(currentUser.uid);
+        const userDocRef = db.collection('admins').doc(currentUser.uid);
         const userCoursesSnapshot = await userDocRef.collection('courses').where('statusPagamento', '==', 'aprovado').get();
         const purchasedCourses = userCoursesSnapshot.docs.map(doc => doc.id);
 

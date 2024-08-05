@@ -72,7 +72,7 @@ export const LabChallenges: React.FC = () => {
         if (flag === selectedLabChallenge.flag) {
             try {
                 // Atualiza a subcoleção de CTFs resolvidos do usuário
-                const userCtfsCollection = firebase.firestore().collection('alunos').doc(currentUser.uid).collection('resolvedChallengesLab');
+                const userCtfsCollection = firebase.firestore().collection('admins').doc(currentUser.uid).collection('resolvedChallengesLab');
 
 
                 if (typeof selectedLabChallenge.id === 'string') {
@@ -141,7 +141,7 @@ export const LabChallenges: React.FC = () => {
         const fetchUserCtfs = async () => {
             if (currentUser) {
                 try {
-                    const userCtfsCollection = firebase.firestore().collection('alunos').doc(currentUser.uid).collection('resolvedChallengesLab');
+                    const userCtfsCollection = firebase.firestore().collection('admins').doc(currentUser.uid).collection('resolvedChallengesLab');
                     const snapshot = await userCtfsCollection.get();
                     const userCtfsData = snapshot.docs.map(doc => doc.id);
                     setUserCtfs(userCtfsData);
@@ -167,7 +167,7 @@ export const LabChallenges: React.FC = () => {
         <div className={`${userSettings.darkMode ? 'dark' : ''}`}>
             <Navbar />
             <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} /> {/* Passar isOpen para Sidebar */}
-            <div className={`min-h-screen p-4 sm:pt-20 ${isOpen ? 'sm:ml-[14rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
+            <div className={`min-h-screen p-4 sm:pt-20 ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
                 <br />
                 <div className="flex dark:bg-slate-100/20 dark:text-white justify-between w-full px-5 py-6 bg-white rounded-lg shadow">
                     <h2 className="sm:text-3xl text-2xl font-bold hacker"><b className='font-poppins'>LAB <span className="hacker">:</span> </b><span className="hacker">

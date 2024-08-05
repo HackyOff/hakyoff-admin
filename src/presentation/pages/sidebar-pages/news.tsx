@@ -41,7 +41,7 @@ export const News: React.FC = () => {
         <div className={`${userSettings.darkMode ? 'dark' : ''}`}>
             <Navbar />
             <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} />
-            <div className={`min-h-screen hid px-4 sm:pt-24 ${isOpen ? 'sm:ml-[14rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
+            <div className={`min-h-screen hid px-4 sm:pt-24 ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
                 <h2 className="text-2xl pt-6 sm:pt-0 sm:text-4xl font-bold hacker dark:text-white">Newsletter HakyOff</h2>
                 <br />
                 <hr />

@@ -7,7 +7,7 @@ import { DefaultMessages } from '@/domain/config/default-messages';
 import { ExamRequestsList } from './list-exams-request';
 import TicketPanel from './ticket-panel';
 
-interface Transaction {
+export interface Transaction {
     id: string;
     courseId: string;
     course_name: string;

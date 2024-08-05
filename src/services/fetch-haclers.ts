@@ -1,42 +1,41 @@
 import { db } from "@/domain/config/firebase";
-import { IHackerScore } from "@/domain/models/score-model";
-import { query, collection, orderBy, where, getDocs } from "firebase/firestore";
+import { IAluno } from "@/interfaces/aluno/aluno";
+import { query, collection, orderBy, getDocs } from "firebase/firestore";
 
-export const fetchHackersAll = async (
+export const fetchAlunosAll = async (
     setLoading: React.Dispatch<React.SetStateAction<boolean>>,
-    setHackers: React.Dispatch<React.SetStateAction<IHackerScore[]>>
+    setAlunos: React.Dispatch<React.SetStateAction<IAluno[]>>
 ) => {
-
     setLoading(true);
 
     const q = query(
-        collection(db, 'hacking'),
-        where('score', '>=', 50),
-        orderBy('score', 'desc')
+        collection(db, 'alunos'),
+        orderBy('displayName', 'desc')
     );
 
     try {
         const querySnapshot = await getDocs(q);
 
-        const fetchedHackers: IHackerScore[] = [];
+        const fetchedAlunos: IAluno[] = [];
         querySnapshot.forEach((doc) => {
-            const hackerData = doc.data();
-            fetchedHackers.push({
-                cod_aluno: hackerData.cod_aluno,
-                country: hackerData.country,
-                photoURL: hackerData.photoURL,
-                name: hackerData.name,
-                score: hackerData.score,
-                solved_challenges: hackerData.solved_challenges,
-                phoneNumber: hackerData.phoneNumber,
-                student_email: hackerData.student_email,
-                createdAt: hackerData.createdAt.toDate(),
+            const alunoData = doc.data();
+            fetchedAlunos.push({
+                nome: alunoData.displayName,
+                email: alunoData.email,
+                telefone: alunoData.phoneNumber,
+                password: alunoData.password,
+                cod_aluno: alunoData.cod_aluno,
+                photo: alunoData.photo,
+                country: alunoData.country,
+                company: alunoData.company,
+                role: alunoData.role,
+                address: alunoData.address
             });
         });
 
-        setHackers(fetchedHackers);
+        setAlunos(fetchedAlunos);
     } catch (error) {
-        console.error("Error fetching hackers: ", error);
+        console.error("Error fetching alunos: ", error);
     } finally {
         setLoading(false);
     }
