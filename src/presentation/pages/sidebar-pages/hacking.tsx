@@ -51,7 +51,7 @@ export const Hacking: React.FC = () => {
                     <br />
                     <img src={extra.hack_face} className='absolute dark:hidden -top-2 opacity-[.2] right-3' alt="" />
                     <img src={extra.hack_face_white} className='absolute hidden dark:block -top-2 opacity-[.2] right-3' alt="" />
-                    <h2 className="sm:text-3xl text-2xl  font-bold hacker dark:text-white ">Hacking dos melhores hackers</h2>
+                    <h2 className="sm:text-3xl text-2xl  font-bold hacker dark:text-white ">Alunos registrados </h2>
                 </div>
 
                 <div className="sm:mt-16 mt-8">

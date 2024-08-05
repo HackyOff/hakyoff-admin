@@ -26,7 +26,7 @@ export function HackingTable({ data }: IHTable) {
                             <td className="sm:px-6 ps-2 dark:text-white py-2 text-xs sm:text-sm font-medium text-gray-900 whitespace-nowrap gap-1 sm:gap-2 flex relative">
                                 <span className="my-auto"> {aluno.cod_aluno} - {aluno.nome.split(' ')[0] + ' ' + aluno.nome.split(' ').pop()}</span>
                             </td>
-                            <td className="sm:px-6 dark:text-white py-2 text-xs sm:text-sm font-bold text-yellow-600 whitespace-nowrap">
+                            <td className="sm:px-6 dark:text-white py-2 text-xs sm:text-sm text-blue-600 hover:underline whitespace-nowrap">
                                 {aluno.email}
                             </td>
                             <td className="sm:px-6 dark:text-white py-2 text-xs sm:text-sm text-gray-500 whitespace-nowrap">
