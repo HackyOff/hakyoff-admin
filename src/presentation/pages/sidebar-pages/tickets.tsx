@@ -1,17 +1,12 @@
-import React, { useEffect, useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { Navbar } from '../../components/dashboard-components/navbar/navbar';
 import { Sidebar } from '../../components/dashboard-components/sidebar/sidebar';
 import { useAuth } from '../../../context/auth-context';
 import { TextEditor } from '../../components/dashboard-components/text-editor/text-editor';
 import { Button } from '../../components';
-import { FaArrowLeft, FaFilter } from 'react-icons/fa';
-import { TicketComponent } from '../../components/dashboard-components/ticket-component/ticket-component';
-import { Modal } from '../../components/modal-ticket/modal-ticket';
-import { ITicket } from '../../../domain/models/ticket-model';
-import { GetStatusColor } from '@/utils/get-status-color-utils';
-import { renderTicketSkeletons } from '@/utils/render-skeleton-ticket';
+import { FaArrowLeft } from 'react-icons/fa';
 import { AlertUtils } from '@/utils/alert-utils';
-import { fetchTickets, createTicket, deleteTicket } from '@/services/ticket-service';
+import { createTicket } from '@/services/ticket-service';
 import TicketPanel from '../admin-pages/ticket-panel';
 
 
@@ -20,43 +15,16 @@ export const Tickets: React.FC = () => {
 
     const [createTicketMode, setCreateTicketMode] = useState(false);
     const [isOpen, setIsOpen] = useState(true);
-    const [tickets, setTickets] = useState<ITicket[]>([]);
-    const [loading, setLoading] = useState(true);
 
     const { currentUser, userSettings } = useAuth();
     const [title, setTitle] = useState('');
     const [editorContent, setEditorContent] = useState('');
-    const [selectedTicket, setSelectedTicket] = useState<ITicket | null>(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const openModal = (ticket: ITicket) => {
-        setSelectedTicket(ticket);
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-        setSelectedTicket(null);
-    };
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
     };
 
-    const fetchTicketsMemo = useMemo(() => {
-        return async () => {
-            setLoading(true);
-            if (currentUser?.email) {
-                const fetchedTickets = await fetchTickets(currentUser.email);
-                setTickets(fetchedTickets);
-            }
-            setLoading(false);
-        };
-    }, [currentUser]);
-
-    useEffect(() => {
-        fetchTicketsMemo();
-    }, [fetchTicketsMemo]);
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -67,21 +35,12 @@ export const Tickets: React.FC = () => {
             setEditorContent('');
             setCreateTicketMode(false);
             AlertUtils.success(`Seu ticket ${title} foi criado com sucesso e será tratado pelo suporte`);
-            fetchTicketsMemo();
+
         } catch (error) {
             AlertUtils.error('Ocorreu um erro ao tentar criar seu ticket');
         }
     };
 
-    const handleDelete = async (id: string) => {
-        try {
-            await deleteTicket(id);
-            AlertUtils.success('Ticket apagado com sucesso!');
-            fetchTicketsMemo();
-        } catch (error: any) {
-            AlertUtils.error('Erro ao apagar ticket, tente novamente mais tarde');
-        }
-    };
 
     return (
         <div className={`${userSettings.darkMode ? 'dark' : ''}`}>
