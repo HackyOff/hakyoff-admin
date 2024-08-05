@@ -11,6 +11,7 @@ import { getDocs, collectionGroup, doc, getDoc, updateDoc } from 'firebase/fires
 import { Transaction } from '../admin-pages/dashboard-transactions';
 import { Button } from '@/presentation/components';
 import { ROUTE_HACKING } from '@/utils/sidebar-utils';
+import { ExamRequestsList } from '../admin-pages/list-exams-request';
 
 
 
@@ -164,7 +165,11 @@ export const Dashboard: React.FC = () => {
                     </tbody>
                 </table>
                 <hr />
+                <br /> 
                 <br />
+                <div>
+                    <ExamRequestsList />
+                </div>
             </div>
 
         </div>

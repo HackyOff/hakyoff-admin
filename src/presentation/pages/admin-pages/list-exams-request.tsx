@@ -30,7 +30,7 @@ export const ExamRequestsList: React.FC = () => {
         <div>
             <br />
 
-            <h2 className='text-2xl font-semibold'>Pedidos de Exames</h2>
+            <h2 className='text-2xl font-bold'>Pedidos de Exames</h2>
             <br />
             <ul className='grid grid-cols-2'>
                 {examRequests.map((examRequest) => (
