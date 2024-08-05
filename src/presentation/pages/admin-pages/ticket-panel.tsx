@@ -2,6 +2,7 @@ import { useAuth } from '@/context/auth-context';
 import { ITicket } from '@/domain/models/ticket-model';
 import { AddNotificationsUtils } from '@/infra/services/add-notifications-utils';
 import { fetchAllTickets, updateTicketStatus } from '@/services/ticket-service';
+import { abbreviateText } from '@/utils/abreviate';
 import { sendEmailSupport } from '@/utils/email-noreply';
 import { GetStatusColor } from '@/utils/get-status-color-utils';
 import { ticketEmailTemplate } from '@/utils/templates/ticket-email-template';
@@ -47,16 +48,16 @@ const TicketPanel = () => {
 
     return (
         <div>
-            <h1>Painel de Tickets</h1>
+            <h1 className='text-2xl font-bold '>Tickets abertos</h1>
             <ul>
                 {tickets.map(ticket => (
-                    <li className='bg-slate-200 border border-green-400 my-4 shadow-lg px-2 py-3' key={ticket.id}>
+                    <li className='bg-white border border-yellow-400 my-4 shadow-lg px-2 py-3' key={ticket.id}>
                         <p>
                             <span className="font-bold">({ticket.code})</span> -  {ticket.title}
                         </p>
                         <p>Status: <span className={` text-xs ${GetStatusColor(ticket.status)}`}> {ticket.status}</span></p>
                         <p>
-                            De: {ticket.student_name} - {ticket.student_email} <a href={`mailto:${ticket.student_email}`} className='text-sm underline text-blue-700' target="__blank" rel="noreferrer">Responder</a>
+                            De: {ticket.student_name} - {abbreviateText(ticket.student_email, 50)} <a href={`mailto:${ticket.student_email}`} className='text-sm underline text-blue-700' target="__blank" rel="noreferrer">Responder</a>
                         </p>
                         <br />
                         <button className='px-3 py-2 border-orange-400 border-2 text-orange-00 text-sm me-2 mt-4' onClick={() => handleStatusChange(ticket.id, 'Pendente', ticket.student_email, ticket.code)}>Marcar como Pendente</button>

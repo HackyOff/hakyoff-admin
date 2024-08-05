@@ -12,6 +12,7 @@ import { GetStatusColor } from '@/utils/get-status-color-utils';
 import { renderTicketSkeletons } from '@/utils/render-skeleton-ticket';
 import { AlertUtils } from '@/utils/alert-utils';
 import { fetchTickets, createTicket, deleteTicket } from '@/services/ticket-service';
+import TicketPanel from '../admin-pages/ticket-panel';
 
 
 export const Tickets: React.FC = () => {
@@ -130,58 +131,7 @@ export const Tickets: React.FC = () => {
                     </>
                 ) : (
                     <>
-                        <h2 className="sm:text-3xl text-2xl font-bold dark:text-white hacker">Seus tickets</h2>
-                        <br />
-                        <div className="w-full px-5 py-6 bg-white rounded-lg shadow dark:bg-slate-100/10">
-                            <Button
-                                text='Abrir Ticket'
-                                onClick={() => setCreateTicketMode(true)}
-                                color='primary'
-                                className='click text-xs sm:text-md'
-                            />
-                        </div>
-                        <br />
-                        <br />
-                        {loading ? (
-                            renderTicketSkeletons()
-                        ) : (
-                            tickets.length > 0 ? (
-                                tickets.map((ticket) => (
-                                    <TicketComponent
-                                        key={ticket.id}
-                                        ticket={ticket}
-                                        onDelete={handleDelete}
-                                        onView={() => openModal(ticket)}
-                                    />
-                                ))
-                            ) : (
-                                <div className="bg-white dark:bg-slate-100/10 text-center rounded-lg shadow w-full py-[10rem] px-5">
-                                    <FaFilter className='mx-auto text-gray-500 text-9xl' />
-                                    <br />
-                                    <br />
-                                    <h2 className="text-gray-500">
-                                        Meus tickets pendentes aparecerão aqui!
-                                    </h2>
-                                </div>
-                            )
-                        )}
-
-                        {isModalOpen && selectedTicket && (
-                            <Modal isOpen={isModalOpen} onClose={closeModal}>
-                                <h2 className="mb-1 text-xl font-bold">{selectedTicket.title}</h2>
-                                <hr />
-                                <div className="flex sm:flex-row flex-col gap-3 my-3 text-sm hacker">
-                                    <p className={`my-auto text-[10px] me-auto sm:me-0 px-2 ${GetStatusColor(selectedTicket.status)}`}> {selectedTicket.status}</p>
-                                    <span className="hidden sm:block"> &middot;</span>
-                                    <span className="my-auto text-xs"> {selectedTicket.createdAt.toLocaleString()}</span>
-                                </div>
-                                <p>
-                                    <div dangerouslySetInnerHTML={{ __html: selectedTicket.content }} />
-                                </p>
-                                <br />
-                                <br />
-                            </Modal>
-                        )}
+                        <TicketPanel />
                     </>
                 )}
             </div>
