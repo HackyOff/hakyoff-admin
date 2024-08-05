@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Sidebar } from '../../components/dashboard-components/sidebar/sidebar';
 import { Navbar } from '../../components/dashboard-components/navbar/navbar';
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/context/auth-context';
-import { INews, NewsData } from '@/utils/news-data-uils';
-import { fetchAllCourses } from '@/services/fetch-courses-service';
-import { ITraining } from '@/interfaces/training/training';
-import { fetchMyCourses } from '@/utils/my-course-utils';
 import "react-multi-carousel/lib/styles.css";
 import { DefaultMessages } from '@/domain/config/default-messages';
 import { db } from '@/domain/config/firebase';
@@ -23,45 +18,12 @@ import { ROUTE_HACKING } from '@/utils/sidebar-utils';
 export const Dashboard: React.FC = () => {
     document.title = 'Dashboard | HakyOff Plaform'
     const [isOpen, setIsOpen] = useState(true); // Definir o estado isOpen aqui
-    const { userSettings, currentUser } = useAuth()
-    const [courses, setCourses] = useState<ITraining[]>([]);
-    const navigate = useNavigate()
-    const [loading, setLoading] = useState(true);
-    const [news, setNews] = useState<INews[]>([]); // Estado para armazenar as notícias
-    const [mycourses, setMyCourses] = useState<ITraining[]>([]);
+    const { userSettings } = useAuth()
 
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
     };
-
-
-    useEffect(() => {
-        const loadCourses = async () => {
-            const fetchedCourses = await fetchMyCourses(currentUser);
-            setMyCourses(fetchedCourses);
-            setLoading(false);
-        };
-
-        loadCourses();
-    }, [currentUser]);
-
-
-
-    useEffect(() => {
-        const fetchNews = async () => {
-            try {
-                const newsData = await NewsData(); // Utilizar a função para buscar as notícias
-                setNews(newsData);
-                setLoading(false)
-            } catch (error) {
-                setLoading(false)
-                console.error('Erro ao buscar notícias:', error);
-            }
-        };
-
-        fetchNews();
-    }, []);
 
     /*
         if (currentUser?.phoneNumber === '' || currentUser?.role === '' || currentUser?.company === '' || currentUser?.address === '' ) {
@@ -73,18 +35,6 @@ export const Dashboard: React.FC = () => {
 
 
 
-    useEffect(() => {
-
-        async function getCourses() {
-
-            const courses = await fetchAllCourses()
-
-            setCourses(courses)
-
-        }
-
-        getCourses();
-    }, []);
 
 
     const [transactions, setTransactions] = useState<Transaction[]>([]);
