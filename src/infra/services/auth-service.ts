@@ -120,7 +120,7 @@ export const loginUser = async (
       // Redireciona para o dashboard
       window.location.href = '/dashboard';
     } else {
-      AlertUtils.error('Conta não cadastrada ou sem permissão de acesso !')
+      AlertUtils.error('Conta não cadastrada ou sem permissão de acesso, contacte o admnistrador !')
       console.error("User document not found in Firestore");
     }
   } catch (error) {
