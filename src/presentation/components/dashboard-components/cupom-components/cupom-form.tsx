@@ -43,7 +43,7 @@ export const CouponForm = () => {
                         <br />
                         <br />
                         <div className="flex justify-between">
-                            <h2 className='text-4xl font-bold  '>Ver Cupons</h2>
+                            <h2 className='text-4xl font-bold hacker '>Ver Cupons</h2>
                             <Button onClick={() => setCriados(!criados)} text='Ver Cupons' color='primary' />
                         </div>
 
@@ -75,7 +75,7 @@ export const CouponForm = () => {
                     <>
                         <br />
                         <div className="flex justify-between">
-                            <h2 className='text-4xl font-bold  '>Cupons Criados </h2>
+                            <h2 className='text-4xl hacker font-bold  '>Cupons Criados </h2>
 
                             <Button onClick={() => setCriados(!criados)} text='Criar Cupom' color='primary' />
                         </div>

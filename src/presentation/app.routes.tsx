@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { LoginPage } from "./pages/login/login-page";
 import ProtectedRoute from "../context/protected-route";
 import { Dashboard } from "./pages/dashboard/dashboard";
-import { ROUTE_DASHBOARD, ROUTE_VIRTUAL_LABS, ROUTE_CTFS, ROUTE_MY_TRAININGS, ROUTE_NEWS, ROUTE_TICKETS, ROUTE_HACKING, ROUTE_SETTINGS, ROUTE_TRAININGS, ROUTE_MY_CERTIFICATES, ROUTE_PROFILE, ROUTE_RESET_PASS_CONFIRM, ROUTE_RESET_PASS, ROUTE_MINI_DASHBOARD, ROUTE_ADD_COURSE, ROUTE_COUPON } from "../utils/sidebar-utils";
+import { ROUTE_DASHBOARD, ROUTE_VIRTUAL_LABS, ROUTE_CTFS, ROUTE_MY_TRAININGS, ROUTE_NEWS, ROUTE_TICKETS, ROUTE_HACKING, ROUTE_SETTINGS, ROUTE_TRAININGS, ROUTE_MY_CERTIFICATES, ROUTE_PROFILE, ROUTE_RESET_PASS_CONFIRM, ROUTE_RESET_PASS, ROUTE_MINI_DASHBOARD, ROUTE_ADD_COURSE, ROUTE_COUPON, ROUTE_NEWS_ADMIN } from "../utils/sidebar-utils";
 import { Ctfs } from "./pages/sidebar-pages/ctfs";
 import { Hacking } from "./pages/sidebar-pages/hacking";
 import { VirtualLabs } from "./pages/sidebar-pages/lab-virtual";
@@ -35,6 +35,7 @@ import { ConfirmEmailAccount } from "./pages/reset-password-confirm/confirm-emai
 import { NotFound } from "./pages/notfound/not-found";
 import { AddNewsPage } from "./pages/admin-pages/add-news-page";
 import { Cupons } from "./pages/sidebar-pages/cupons";
+import { NewsAdminPage } from "./pages/sidebar-pages/news-amin-page";
 
 export function AppRoutes() {
 
@@ -74,6 +75,7 @@ export function AppRoutes() {
           <Route path="" element={<Dashboard />} />
           <Route path={ROUTE_DASHBOARD} Component={Dashboard} />
           <Route path={ROUTE_COUPON} Component={Cupons} />
+          <Route path={ROUTE_NEWS_ADMIN} Component={NewsAdminPage} />
           <Route path={ROUTE_VIRTUAL_LABS} Component={VirtualLabs} />
           <Route path={ROUTE_MY_CERTIFICATES} Component={MyCertificates} />
           <Route path={ROUTE_VIRTUAL_LABS + "/:labId"} Component={LabChallenges} />

@@ -12,6 +12,7 @@ import { Transaction } from '../admin-pages/dashboard-transactions';
 import { Button } from '@/presentation/components';
 import { ROUTE_HACKING } from '@/utils/sidebar-utils';
 import { ExamRequestsList } from '../admin-pages/list-exams-request';
+import AccordionTable from './table-transaction';
 
 
 
@@ -119,51 +120,7 @@ export const Dashboard: React.FC = () => {
                 <Button onClick={() => window.location.href = ROUTE_HACKING} color='primary' text='Ver todos alunos' />
                 <br />
                 <h1 className="text-2xl font-bold mb-4">Dashboard de Aprovação de Transações</h1>
-                <table className="  bg-white border border-gray-200">
-                    <thead>
-                        <tr>
-                            <th className="py-2 text-sm  text-start px-4 border-b">Student</th>
-                            <th className="py-2 text-sm  text-start px-4 border-b">Email</th>
-                            <th className="py-2 text-sm  text-start px-4 border-b">Curso</th>
-                            <th className="py-2 text-sm  text-start px-4 border-b">Preço</th>
-                            <th className="py-2 text-sm  text-start px-4 border-b">Modalidade</th>
-                            <th className="py-2 text-sm  text-start px-4 border-b">Status</th>
-                            <th className="py-2 text-sm  text-start px-4 border-b">Progresso</th>
-                            <th className="py-2 text-sm  text-start px-4 border-b">Comprovante</th>
-                            <th className="py-2 text-sm  text-start px-4 border-b">Ação</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {transactions.map((transaction) => (
-                            <tr key={transaction.id}>
-                                <td className="py-2 capitalize text-xs px-4 border-b">{transaction.studentName}</td>
-                                <td className="py-2 text-xs px-4 border-b">{transaction.studentEmail}</td>
-                                <td className="py-2 capitalize text-xs px-4 border-b">{transaction.course_name}</td>
-                                <td className="py-2 capitalize text-xs px-4 border-b">{transaction.price} AOA</td>
-                                <td className="py-2 capitalize text-xs px-4 border-b">{transaction.method}</td>
-                                <td className="py-2 capitalize text-xs px-4 border-b">{transaction.statusPagamento}</td>
-                                <td className={`py-2 capitalize text-xs ${parseInt(transaction.progresso) === 100 && 'bg-green-200'} px-4 border-b`}>{transaction.progresso}% { }</td>
-                                <td className="py-2 capitalize text-xs px-4 border-b">
-                                    {transaction.boletoFile && (
-                                        <a href={transaction.boletoFile} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-                                            Ver Comprovante
-                                        </a>
-                                    )}
-                                </td>
-                                <td className="py-2 px-4 text-xs border-b">
-                                    {transaction.statusPagamento === 'pendente' && (
-                                        <button
-                                            onClick={() => approveTransaction(transaction)}
-                                            className="bg-primary text-black px-2 py-1 rounded hover:bg-yellow-600"
-                                        >
-                                            Aprovar
-                                        </button>
-                                    )}
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+               <AccordionTable approveTransaction={approveTransaction} transactions={transactions} />
                 <hr />
                 <br />
                 <br />
