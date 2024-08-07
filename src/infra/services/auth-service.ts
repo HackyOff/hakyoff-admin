@@ -10,6 +10,7 @@ import { getDoc, doc as firestoreDoc, Timestamp, setDoc } from "firebase/firesto
 //import { sendNewDeviceEmail, sendWelcomeEmail } from "@/utils/emailService";
 import { getCurrentDevice, getCurrentIp } from "@/utils/devie-services";
 import { sendNewDeviceEmail } from "@/utils/emailService";
+import { AlertUtils } from "@/utils/alert-utils";
 
 export const registerUser = async (user: IAluno): Promise<void> => {
   try {
@@ -119,6 +120,7 @@ export const loginUser = async (
       // Redireciona para o dashboard
       window.location.href = '/dashboard';
     } else {
+      AlertUtils.error('Conta não cadastrada ou sem permissão de acesso !')
       console.error("User document not found in Firestore");
     }
   } catch (error) {
