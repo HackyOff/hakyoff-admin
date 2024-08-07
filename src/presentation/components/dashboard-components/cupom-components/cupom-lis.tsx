@@ -33,14 +33,14 @@ export const CouponList: React.FC = () => {
   }
 
   return (
-    <div className="container">
+    <div className=" ">
       <ul className='grid grid-cols-2 gap-4'>
         {coupons.map(coupon => (
-          <li key={coupon.code} className='my-1 bg-slate-100 py-6 px-6'>
+          <li key={coupon.code} className='my-1 bg-white py-6 px-6'>
             {coupon.code} - {coupon.discount}% - Válido até: {coupon.expiresAt}
             <br />
             {coupon.singleUse && `Uso único - Usado ${coupon.usedCount} vez(es)`}
-            <br /> 
+            <br />
             <hr />
             Usuários que utilizaram este cupom: {formatUsedByList(coupon.usedBy)}
             <br />

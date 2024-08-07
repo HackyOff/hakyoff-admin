@@ -165,12 +165,15 @@ export const Dashboard: React.FC = () => {
                     </tbody>
                 </table>
                 <hr />
-                <br /> 
+                <br />
                 <br />
                 <div>
                     <ExamRequestsList />
                 </div>
+                <br />
+                <br />
             </div>
+
 
         </div>
     );

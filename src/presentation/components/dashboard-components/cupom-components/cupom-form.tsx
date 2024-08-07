@@ -14,6 +14,8 @@ export const CouponForm = () => {
         usedBy: [], // Lista de emails dos usuários que utilizaram o cupom
     });
 
+    const [criados, setCriados] = useState(false)
+
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value, type, checked } = e.target;
         setCoupon(prevCoupon => ({
@@ -33,39 +35,56 @@ export const CouponForm = () => {
     };
 
     return (
-        <>
+        <div className=' '>
+            {
+                !criados ?
 
-<br />
-<br />
-<br />
-            <center>
-                <h2 className='text-4xl font-bold dark:text-white text-white'>Criar cupoms</h2>
-            </center>
-            <form onSubmit={handleSubmit} className='container text-white pt-16 flex flex-col gap-6'>
-                <input className='input_card' name="code" value={coupon.code} onChange={handleChange} placeholder="Código do cupom" required />
-                <label htmlFor="">Desconto (%)</label>
-                <input className='input_card' name="discount" value={coupon.discount} onChange={handleChange} placeholder="Desconto (%)" type="number" required />
-                <input
-                    className='input_card'
-                    name="expiresAt"
-                    type="date"
-                    value={coupon.expiresAt}
-                    onChange={handleChange}
-                    min={new Date().toISOString().split('T')[0]} // Definindo a data mínima como o dia atual
-                    required
-                />  <label>
-                    <input name="singleUse" className='me-4' checked={coupon.singleUse} onChange={handleChange} type="checkbox" />
-                    Uso único
-                </label>
-                <div>
+                    <>
+                        <br />
+                        <br />
+                        <div className="flex justify-between">
+                            <h2 className='text-4xl font-bold  '>Ver Cupons</h2>
+                            <Button onClick={() => setCriados(!criados)} text='Ver Cupons' color='primary' />
+                        </div>
 
-                    <Button type="submit" text='Criar Cupom' color='primary' />
-                </div>
-            </form>
+                        <form onSubmit={handleSubmit} className=' w-6/12  text-start justify-start pt-6 flex flex-col gap-6'>
+                            <input className='input_card' name="code" value={coupon.code} onChange={handleChange} placeholder="Código do cupom" required />
+                            <label htmlFor="">Desconto (%)</label>
+                            <input className='input_card' name="discount" value={coupon.discount} onChange={handleChange} placeholder="Desconto (%)" type="number" required />
+                            <input
+                                className='input_card'
+                                name="expiresAt"
+                                type="date"
+                                value={coupon.expiresAt}
+                                onChange={handleChange}
+                                min={new Date().toISOString().split('T')[0]} // Definindo a data mínima como o dia atual
+                                required
+                            />  <label>
+                                <input name="singleUse" className='me-4' checked={coupon.singleUse} onChange={handleChange} type="checkbox" />
+                                Uso único
+                            </label>
+                            <div>
 
-            <br /><br />
-            <br />
-            <CouponList />
-        </>
+                                <Button type="submit" text='Criar Cupom' color='primary' />
+                            </div>
+                        </form>
+
+                        <br />
+                    </>
+                    :
+                    <>
+                        <br />
+                        <div className="flex justify-between">
+                            <h2 className='text-4xl font-bold  '>Cupons Criados </h2>
+
+                            <Button onClick={() => setCriados(!criados)} text='Criar Cupom' color='primary' />
+                        </div>
+                        <br />
+                        <CouponList />
+                    </>
+
+            }
+
+        </div>
     );
 };

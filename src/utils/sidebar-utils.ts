@@ -12,6 +12,7 @@ export const ROUTE_SETTINGS = "/dashboard/settings";
 export const ROUTE_PROFILE = "/dashboard/profile";
 export const ROUTE_RESET_PASS = "/reset-password";
 export const ROUTE_LOGIN = "/";
+export const ROUTE_COUPON = "/dashboard/cuppons";
 export const ROUTE_MINI_DASHBOARD = "/admin-trans";
 export const ROUTE_ADD_COURSE = "/add-course";
 export const ROUTE_RESET_PASS_CONFIRM = "/reset-password-confirm";
@@ -20,7 +21,7 @@ export const ROUTE_RESET_PASS_CONFIRM = "/reset-password-confirm";
 
 // Importando os ícones
 import { IconType } from "react-icons";
-import { FaHome } from "react-icons/fa";
+import { FaHome, FaTicketAlt } from "react-icons/fa";
 import { FaUser } from "react-icons/fa6";
 import { IoNewspaperOutline, IoTicketSharp } from "react-icons/io5";
 import { MdOutlinePlayLesson } from "react-icons/md";
@@ -59,6 +60,11 @@ export const SideBarUtils: ISideBar[] = [
     link: ROUTE_TRAININGS,
     text: "Treinamentos",
     icon: MdOutlinePlayLesson,
+  },
+  {
+    link: ROUTE_COUPON,
+    text: "Cupons",
+    icon: FaTicketAlt,
   },
   /*
   {
