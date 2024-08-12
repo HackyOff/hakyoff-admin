@@ -1,14 +1,16 @@
 // AddLabForm.tsx
 import { db } from '@/domain/config/firebase';
-import {  RandomAlphanumeric } from '@/domain/config/navbar-config';
+import { RANDOM_CODE, RandomAlphanumeric } from '@/domain/config/navbar-config';
 import { IMLab } from '@/domain/models/labs-model';
 import { ICtfsChallenge } from '@/interfaces/ctfs/ctfs-intrface';
-import React, { useState } from 'react';
+import { ITraining } from '@/interfaces/training/training';
+import { fetchAllCourses } from '@/services/fetch-courses-service';
+import React, { useEffect, useMemo, useState } from 'react';
 
 export const AddLabForm: React.FC = () => {
     const [lab, setLab] = useState<Omit<IMLab, 'challenges'> & { challenges: ICtfsChallenge[] }>({
-        lab_id: 0,
-        course_id: 0,
+        lab_id: RANDOM_CODE,
+        course_id: RandomAlphanumeric,
         lab_name: '',
         course_name: '',
         challenges: [],
@@ -66,13 +68,32 @@ export const AddLabForm: React.FC = () => {
         }
     };
 
+    const [courses, setCourses] = useState<ITraining[]>([]);
+
+    const getCoursesMemo = useMemo(() => {
+        return async () => {
+            try {
+                const courses = await fetchAllCourses();
+                setCourses(courses);
+            } catch (error) {
+                console.error('Erro ao buscar cursos:', error);
+            }
+        };
+    }, []);
+
+
+    useEffect(() => {
+        getCoursesMemo();
+    }, [getCoursesMemo]);
+
     return (
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-4 form-lab">
             <div className="flex flex-col">
                 <label className="mb-1">Lab ID:</label>
                 <input
                     name="lab_id"
                     type="number"
+                    disabled
                     value={lab.lab_id}
                     onChange={handleLabChange}
                     className="p-2 border rounded"
@@ -100,19 +121,20 @@ export const AddLabForm: React.FC = () => {
             </div>
             <div className="flex flex-col">
                 <label className="mb-1">Course Name:</label>
-                <input
-                    name="course_name"
-                    type="text"
-                    value={lab.course_name}
-                    onChange={handleLabChange}
-                    className="p-2 border rounded"
-                />
+                <select className='p-2 outline-none' name="" id="">
+                    {
+                        courses.map((e, i) => (
+                            <option key={i} value={e.title} >{e.title}</option>
+                        ))
+                    }
+                </select>
             </div>
 
             <div>
                 <h3 className="text-lg font-semibold">Challenges:</h3>
                 {lab.challenges.map((challenge, index) => (
                     <div key={index} className="p-4 mb-2 space-y-2 border rounded">
+
                         <div className="flex flex-col">
                             <label className="mb-1">Title:</label>
                             <input
@@ -123,6 +145,7 @@ export const AddLabForm: React.FC = () => {
                                 className="p-2 border rounded"
                             />
                         </div>
+
                         <div className="flex flex-col">
                             <label className="mb-1">Flag Correta:</label>
                             <input
@@ -133,6 +156,7 @@ export const AddLabForm: React.FC = () => {
                                 className="p-2 border rounded"
                             />
                         </div>
+
                         <div className="flex flex-col">
                             <label className="mb-1">Link do lab:</label>
                             <input
@@ -152,6 +176,7 @@ export const AddLabForm: React.FC = () => {
                                 className="p-2 border rounded"
                             />
                         </div>
+
                         <div className="flex flex-col">
                             <label className="mb-1">Level:</label>
 
@@ -160,11 +185,14 @@ export const AddLabForm: React.FC = () => {
                                 onChange={(e) => handleChallengeChange(index, e)}
                                 className="w-full p-2 border rounded"
                             >
+
                                 <option value="Beginner">Beginner</option>
                                 <option value="Intermediate">Intermediate</option>
                                 <option value="Advanced">Advanced</option>
+
                             </select>
                         </div>
+
                         <div className="flex flex-col">
                             <label className="mb-1">Points:</label>
                             <input
