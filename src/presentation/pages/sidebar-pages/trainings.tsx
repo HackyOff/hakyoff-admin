@@ -50,7 +50,7 @@ function Trainings() {
                 <section id="trainings" className="mx-2">
                     <br />
                     <br />
-                    <div className="flex">
+                    <div className="flex justify-between">
                         <div>
                             <HakyOffSquare className='sm:mt-6' />
                             <h2 className="font-semibold dark:text-white hacker text-xl sm:text-3xl mt-[1rem]">Treinamentos Disponíveis</h2>
