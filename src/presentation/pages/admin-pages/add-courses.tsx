@@ -329,7 +329,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
               </button>
 
               {module.lessons.map((lesson, lessonIndex) => (
-                <div key={lessonIndex} className="p-4 mt-4 border rounded-md shadow-sm">
+                <div key={lessonIndex} className="p-4 mt-4 border rounded-md shadow-sm form-mat">
                   <h4 className="mb-2 text-lg font-bold">Aula {lessonIndex + 1}</h4>
 
                   <label className="block mt-2">
@@ -368,7 +368,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
               </button>
 
               {module.materials.map((material, materialIndex) => (
-                <div key={materialIndex} className="p-4 mt-4 border rounded-md shadow-sm">
+                <div key={materialIndex} className="p-4 mt-4 border rounded-md shadow-sm form-mat">
                   <h4 className="mb-2 text-lg font-bold">Material {materialIndex + 1}</h4>
 
                   <label className="block mt-2">
