@@ -45,16 +45,16 @@ export const Hacking: React.FC = () => {
 
 
 
-                <div className="relative sm:mt-20 mt-2 w-full sm:px-5 px-3 sm:py-6 py-4 dark:bg-slate-100/20  bg-white rounded-lg shadow">
+                <div className="relative w-full px-3 py-4 mt-2 bg-white rounded-lg shadow sm:mt-10 sm:px-5 sm:py-6 dark:bg-slate-100/20">
                     <HakyOffSquare className='dark:text-white' />
                     <div className="absolute top-0 bottom-0 left-0 right-0 z-10 "></div>
                     <br />
                     <img src={extra.hack_face} className='absolute dark:hidden -top-2 opacity-[.2] right-3' alt="" />
                     <img src={extra.hack_face_white} className='absolute hidden dark:block -top-2 opacity-[.2] right-3' alt="" />
-                    <h2 className="sm:text-3xl text-2xl  font-bold hacker dark:text-white ">Alunos registrados </h2>
+                    <h2 className="text-2xl font-bold sm:text-3xl hacker dark:text-white ">Alunos registrados </h2>
                 </div>
 
-                <div className="sm:mt-16 mt-8">
+                <div className="mt-8 sm:mt-16">
                     {
                         loading ?
                             <>
