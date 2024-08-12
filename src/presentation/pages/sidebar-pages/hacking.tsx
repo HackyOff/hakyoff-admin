@@ -42,9 +42,7 @@ export const Hacking: React.FC = () => {
             <Navbar />
             <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} /> {/* Passar isOpen para Sidebar */}
             <div className={`min-h-screen hid p-4 sm:pt-20 ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
-
-
-
+ 
                 <div className="relative w-full px-3 py-4 mt-2 bg-white rounded-lg shadow sm:mt-10 sm:px-5 sm:py-6 dark:bg-slate-100/20">
                     <HakyOffSquare className='dark:text-white' />
                     <div className="absolute top-0 bottom-0 left-0 right-0 z-10 "></div>
