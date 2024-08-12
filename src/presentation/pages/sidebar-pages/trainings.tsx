@@ -2,28 +2,29 @@ import { useEffect, useMemo, useState } from 'react';
 import { Sidebar } from '../../components/dashboard-components/sidebar/sidebar';
 import { Navbar } from '../../components/dashboard-components/navbar/navbar';
 import { motion } from 'framer-motion';
-import { CardComponent, HakyOffSquare } from '../../components';
+import { Button, CardComponent, HakyOffSquare } from '../../components';
 import { useAuth } from '@/context/auth-context';
 import { renderCardSkeletons } from '@/utils/course-skeleton-utils';
 import { fetchAllCourses } from '@/services/fetch-courses-service';
 import { ITraining } from '@/interfaces/training/training';
+import { ROUTE_ADD_COURSE } from '@/utils/sidebar-utils';
 
 
 function Trainings() {
-    
+
     document.title = 'Treinamentos Disponíveis | HakyOff Academy';
-    
-    
+
+
     const [isOpen, setIsOpen] = useState(true);
     const [courses, setCourses] = useState<ITraining[]>([]);
-    
+
     const { userSettings } = useAuth();
-    
+
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
     };
-    
-    
+
+
     const getCoursesMemo = useMemo(() => {
         return async () => {
             try {
@@ -34,12 +35,12 @@ function Trainings() {
             }
         };
     }, []);
-    
-    
+
+
     useEffect(() => {
         getCoursesMemo();
     }, [getCoursesMemo]);
-    
+
 
     return (
         <div className={`${userSettings.darkMode ? 'dark' : ''}`}>
@@ -49,9 +50,15 @@ function Trainings() {
                 <section id="trainings" className="mx-2">
                     <br />
                     <br />
-                    <HakyOffSquare className='sm:mt-6' />
-                    <h2 className="font-semibold dark:text-white hacker text-xl sm:text-3xl mt-[1rem]">Treinamentos Disponíveis</h2>
-                    
+                    <div className="flex">
+                        <div>
+                            <HakyOffSquare className='sm:mt-6' />
+                            <h2 className="font-semibold dark:text-white hacker text-xl sm:text-3xl mt-[1rem]">Treinamentos Disponíveis</h2>
+
+                        </div>
+                        <Button className='mt-auto' color='primary' onClick={() => window.location.href = ROUTE_ADD_COURSE} text=' Adicionar Treinamento' />
+
+                    </div>
                     {
                         courses.length <= 0 ?
                             <>
