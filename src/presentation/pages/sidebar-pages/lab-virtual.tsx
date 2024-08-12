@@ -4,8 +4,7 @@ import { useState } from 'react';
 import { Navbar } from '../../components/dashboard-components/navbar/navbar';
 import { Sidebar } from '../../components/dashboard-components/sidebar/sidebar';
 import { useAuth } from '@/context/auth-context';
-import { ROUTE_TRAININGS } from '@/utils/sidebar-utils';
-import { ListLabs } from '@/presentation/components/dashboard-components/list-labs/list-labs';
+import { ROUTE_TRAININGS } from '@/utils/sidebar-utils'; 
 import { FaCartPlus } from 'react-icons/fa6';
 import { AddLabForm } from '../admin-pages/add-labs';
 
