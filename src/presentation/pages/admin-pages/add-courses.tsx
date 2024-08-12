@@ -159,12 +159,10 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
     setModules(updatedModules);
   };
 
-
-
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">Adicionar Treinamento com Módulos, Aulas e Materiais</h1>
-      <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+    <div className="max-w-4xl p-8 mt-10 bg-white">
+      <h1 className="mb-4 text-3xl font-bold">Adicionar Treinamento com Módulos, Aulas e Materiais</h1>
+      <form onSubmit={(e) => e.preventDefault()} className="space-y-4 form-ad-c">
         <div className="grid grid-cols-2 gap-4">
           <label className="block">
             <span className="text-gray-700">Título do Treinamento:</span>
@@ -172,7 +170,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
               type="text"
               value={courseTitle}
               onChange={(e) => setCourseTitle(e.target.value)}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </label>
           <label className="block">
@@ -180,7 +178,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
             <textarea
               value={courseDescription}
               onChange={(e) => setCourseDescription(e.target.value)}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </label>
           <label className="block">
@@ -189,7 +187,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
               type="number"
               value={coursePrice}
               onChange={(e) => setCoursePrice(Number(e.target.value))}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </label>
           <label className="block">
@@ -198,7 +196,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
               type="number"
               value={courseHours}
               onChange={(e) => setCourseHours(Number(e.target.value))}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </label>
           <label className="block mt-4">
@@ -206,7 +204,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value as 'Brevemente' | 'Disponível')}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
               <option value="">Selecione um status</option>
               <option value="Brevemente">Brevemente</option>
@@ -222,7 +220,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
                 const selected = trainers.find(trainer => trainer.name === selectedName) || null;
                 setSelectedTrainer(selected); // Atualiza o estado com o instrutor selecionado
               }}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
               <option value="">Selecione um instrutor</option>
               {trainers.map(trainer => (
@@ -236,7 +234,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
             <input
               type="file"
               onChange={(e) => setCourseCover(e.target.files ? e.target.files[0] : null)}
-              className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             />
           </label>
           <br />
@@ -249,7 +247,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
                   type="checkbox"
                   checked={benefits.lab}
                   onChange={(e) => setBenefits({ ...benefits, lab: e.target.checked })}
-                  className="form-checkbox h-5 w-5 text-indigo-600"
+                  className="w-5 h-5 text-indigo-600 form-checkbox"
                 />
                 <span className="text-gray-700">Laboratório prático</span>
               </label>
@@ -258,7 +256,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
                   type="checkbox"
                   checked={benefits.material}
                   onChange={(e) => setBenefits({ ...benefits, material: e.target.checked })}
-                  className="form-checkbox h-5 w-5 text-indigo-600"
+                  className="w-5 h-5 text-indigo-600 form-checkbox"
                 />
                 <span className="text-gray-700">Material didático</span>
               </label>
@@ -267,7 +265,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
                   type="checkbox"
                   checked={benefits.lessons}
                   onChange={(e) => setBenefits({ ...benefits, lessons: e.target.checked })}
-                  className="form-checkbox h-5 w-5 text-indigo-600"
+                  className="w-5 h-5 text-indigo-600 form-checkbox"
                 />
                 <span className="text-gray-700">Aulas gravadas</span>
               </label>
@@ -276,7 +274,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
                   type="checkbox"
                   checked={benefits.exam}
                   onChange={(e) => setBenefits({ ...benefits, exam: e.target.checked })}
-                  className="form-checkbox h-5 w-5 text-indigo-600"
+                  className="w-5 h-5 text-indigo-600 form-checkbox"
                 />
                 <span className="text-gray-700">Exame ao final do Treinamento</span>
               </label>
@@ -285,7 +283,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
                   type="checkbox"
                   checked={benefits.support}
                   onChange={(e) => setBenefits({ ...benefits, support: e.target.checked })}
-                  className="form-checkbox h-5 w-5 text-indigo-600"
+                  className="w-5 h-5 text-indigo-600 form-checkbox"
                 />
                 <span className="text-gray-700">Suporte contínuo</span>
               </label>
@@ -293,22 +291,23 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
           </fieldset>
         </div>
 
-        <button onClick={handleAddCourse} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <button onClick={handleAddCourse} className="px-4 py-2 font-bold rounded bg-primary hover:bg-blue-700">
           Adicionar Curso
         </button>
+
       </form>
 
       <hr className="my-8" />
 
       <div>
-        <h2 className="text-2xl font-bold mb-4">Adicionar Módulos, Aulas e Materiais</h2>
-        <button onClick={handleAddModule} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+        <h2 className="mb-4 text-2xl font-bold">Adicionar Módulos, Aulas e Materiais</h2>
+        <button onClick={handleAddModule} className="px-4 py-2 font-bold text-white bg-green-500 rounded hover:bg-green-700">
           Adicionar Módulo
         </button>
 
         {modules.map((module, moduleIndex) => (
-          <div key={moduleIndex} className="mt-4 border p-4 rounded-md shadow-sm">
-            <h3 className="text-xl font-bold mb-2">Módulo {moduleIndex + 1}</h3>
+          <div key={moduleIndex} className="p-4 mt-4 border rounded-md shadow-sm">
+            <h3 className="mb-2 text-xl font-bold">Módulo {moduleIndex + 1}</h3>
 
             <label className="block mt-2">
               <span className="text-gray-700">Título do Módulo:</span>
@@ -320,18 +319,18 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
                   updatedModules[moduleIndex].title = e.target.value;
                   setModules(updatedModules);
                 }}
-                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               />
             </label>
 
             <div className="mt-4">
-              <button onClick={() => handleAddLesson(module.id)} className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+              <button onClick={() => handleAddLesson(module.id)} className="px-4 py-2 font-bold text-white bg-yellow-500 rounded hover:bg-yellow-700">
                 Adicionar Aula
               </button>
 
               {module.lessons.map((lesson, lessonIndex) => (
-                <div key={lessonIndex} className="mt-4 border p-4 rounded-md shadow-sm">
-                  <h4 className="text-lg font-bold mb-2">Aula {lessonIndex + 1}</h4>
+                <div key={lessonIndex} className="p-4 mt-4 border rounded-md shadow-sm">
+                  <h4 className="mb-2 text-lg font-bold">Aula {lessonIndex + 1}</h4>
 
                   <label className="block mt-2">
                     <span className="text-gray-700">Título da Aula:</span>
@@ -343,7 +342,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
                         updatedModules[moduleIndex].lessons[lessonIndex].title = e.target.value;
                         setModules(updatedModules);
                       }}
-                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
                   </label>
 
@@ -356,7 +355,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
                         updatedModules[moduleIndex].lessons[lessonIndex].videoFile = e.target.files ? e.target.files[0] : null;
                         setModules(updatedModules);
                       }}
-                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
                   </label>
                 </div>
@@ -364,13 +363,13 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
             </div>
 
             <div className="mt-4">
-              <button onClick={() => handleAddMaterial(module.id)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+              <button onClick={() => handleAddMaterial(module.id)} className="px-4 py-2 font-bold text-white bg-red-500 rounded hover:bg-red-700">
                 Adicionar Material
               </button>
 
               {module.materials.map((material, materialIndex) => (
-                <div key={materialIndex} className="mt-4 border p-4 rounded-md shadow-sm">
-                  <h4 className="text-lg font-bold mb-2">Material {materialIndex + 1}</h4>
+                <div key={materialIndex} className="p-4 mt-4 border rounded-md shadow-sm">
+                  <h4 className="mb-2 text-lg font-bold">Material {materialIndex + 1}</h4>
 
                   <label className="block mt-2">
                     <span className="text-gray-700">Título do Material:</span>
@@ -382,7 +381,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
                         updatedModules[moduleIndex].materials[materialIndex].title = e.target.value;
                         setModules(updatedModules);
                       }}
-                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
                   </label>
 
@@ -402,7 +401,7 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
                           });
                         }
                       }}
-                      className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                      className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
                   </label>
                 </div>
