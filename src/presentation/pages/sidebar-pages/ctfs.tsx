@@ -3,18 +3,13 @@ import { Navbar } from '../../components/dashboard-components/navbar/navbar';
 import { Sidebar } from '../../components/dashboard-components/sidebar/sidebar';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
-import { FaAngleRight, FaCheckCircle, FaEdit, FaRegTimesCircle, FaFilter } from 'react-icons/fa';
-import { ICtfsChallenge, ICtfs } from '@/interfaces/ctfs/ctfs-intrface';
-import { GetStatusColor } from '@/utils/get-status-color-utils';
-import { Modal } from '@/presentation/components/modal-ticket/modal-ticket';
+import { FaAngleRight, FaFilter } from 'react-icons/fa';
+import { ICtfs } from '@/interfaces/ctfs/ctfs-intrface';
 import { Button } from '@/presentation/components';
 import { abbreviateText } from '@/utils/abreviate';
 import { useAuth } from '@/context/auth-context';
 import { getCTFBackgroundColor } from '@/utils/get-ctf-bgcolor';
-import { IHackerScore } from '@/domain/models/score-model';
 import { renderTicketSkeletons } from '@/utils/render-skeleton-ticket';
-import { LoaderText } from '@/presentation/components/dashboard-components/loader-text/loader-text';
-import { AlertUtils } from '@/utils/alert-utils';
 import { extra } from '@/utils/image-exporter';
 import { FaFilterCircleXmark } from 'react-icons/fa6';
 import AddCtfForm from '../admin-pages/add-ctfs';
@@ -24,15 +19,9 @@ export const Ctfs: React.FC = () => {
     document.title = 'CTFS HakyOff | HakyOff Academy'
 
     const [isOpen, setIsOpen] = useState(true);
-    const [selectedCTF, setSelectedCTF] = useState<ICtfsChallenge | null>(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(true);
-    const [loadingC, setLoadingC] = useState(false);
     const [createCtf, setCreateCtf] = useState(false);
     const [ctfs, setCtfs] = useState<ICtfs[]>([]);
-    const [userCtfs, setUserCtfs] = useState<string[]>([]); // IDs dos CTFs resolvidos pelo usuário
-    const [flag, setFlag] = useState('');
-    const [msg, setMsg] = useState('');
     const [filters, setFilters] = useState({
         name: '',
         difficulty: '',
@@ -60,7 +49,8 @@ export const Ctfs: React.FC = () => {
                     const userCtfsCollection = firebase.firestore().collection('admins').doc(currentUser.uid).collection('resolvedCtfs');
                     const snapshot = await userCtfsCollection.get();
                     const userCtfsData = snapshot.docs.map(doc => doc.id);
-                    setUserCtfs(userCtfsData);
+                    console.log(userCtfsData)
+                    //setUserCtfs(userCtfsData);
                 } catch (error) {
                     console.error('Erro ao buscar CTFs do usuário:', error);
                 }
@@ -72,75 +62,11 @@ export const Ctfs: React.FC = () => {
     }, [currentUser]);
 
 
-    const closeModal = () => {
-        setIsModalOpen(false);
-        setSelectedCTF(null);
-        setFlag('');
-    };
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
     };
 
-    const handleSubmitFlag = async () => {
-        if (!selectedCTF || !currentUser) return;
-        setLoadingC(true);
-
-        if (flag === selectedCTF.flag) {
-            try {
-                // Atualiza a subcoleção de CTFs resolvidos do usuário
-                const userCtfsCollection = firebase.firestore().collection('admins').doc(currentUser.uid).collection('resolvedCtfs');
-                if (typeof selectedCTF.id === 'string') {
-                    await userCtfsCollection.doc(selectedCTF.id).set({
-                        ctfName: selectedCTF.title,
-                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
-                    });
-
-                    // Atualiza a coleção hacking do usuário
-                    const hackingCollection = firebase.firestore().collection('hacking');
-                    const hackingQuery = hackingCollection.where('student_email', '==', currentUser.email);
-                    const hackingSnapshot = await hackingQuery.get();
-
-                    if (!hackingSnapshot.empty) {
-                        const hackerDoc = hackingSnapshot.docs[0];
-                        const hackerData = hackerDoc.data() as IHackerScore;
-
-                        const updatedScore = hackerData.score + selectedCTF.pts;
-                        const updatedSolvedChallenges = hackerData.solved_challenges + 1;
-
-                        await hackingCollection.doc(hackerDoc.id).update({
-                            score: updatedScore,
-                            solved_challenges: updatedSolvedChallenges
-                        });
-
-                        setUserCtfs([...userCtfs, selectedCTF.id]);
-
-                        setLoadingC(false);
-                        setMsg('right');
-                        AlertUtils.success(`Parabéns ${currentUser.displayName?.split(' ').pop()}, você conseguiu resolver este desafio!`);
-                    } else {
-                        setLoadingC(false);
-                        console.error('Nenhum documento encontrado na coleção hacking para o usuário:', currentUser.email);
-                        alert('Erro ao atualizar a pontuação. Tente novamente.');
-                    }
-                } else {
-                    setLoadingC(false);
-                    console.error('selectedCTF.id não é uma string:', selectedCTF.id);
-                    alert('Erro ao submeter a flag. Tente novamente.');
-                }
-            } catch (error) {
-                setLoadingC(false);
-                console.error('Erro ao atualizar os CTFs resolvidos do usuário:', error);
-                alert('Erro ao submeter a flag. Tente novamente.');
-            }
-        } else {
-            setMsg('wrong');
-            setLoadingC(false);
-            setTimeout(() => {
-                setMsg('');
-            }, 6000);
-        }
-    };
 
     const filteredCtfs = ctfs.filter((ctf) => {
         // Filtro principal dos CTFs
