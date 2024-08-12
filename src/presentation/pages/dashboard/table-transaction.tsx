@@ -10,11 +10,11 @@ interface AccordionTableProps {
 
 const AccordionTable: React.FC<AccordionTableProps> = ({ transactions, approveTransaction }) => {
     const [isExpanded, setIsExpanded] = useState(false);
-
+    
     const toggleAccordion = () => {
         setIsExpanded(!isExpanded);
     };
-
+    
     return (
         <div className="accordion">
             <button
