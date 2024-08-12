@@ -6,8 +6,8 @@ import { Button, CardComponent, HakyOffSquare } from '../../components';
 import { useAuth } from '@/context/auth-context';
 import { renderCardSkeletons } from '@/utils/course-skeleton-utils';
 import { fetchAllCourses } from '@/services/fetch-courses-service';
-import { ITraining } from '@/interfaces/training/training';
-import { ROUTE_ADD_COURSE } from '@/utils/sidebar-utils';
+import { ITraining } from '@/interfaces/training/training'; 
+import { AddCoursePage } from '../admin-pages/add-courses';
 
 
 function Trainings() {
@@ -16,6 +16,7 @@ function Trainings() {
 
 
     const [isOpen, setIsOpen] = useState(true);
+    const [createCourse, setcreateCourse] = useState(false);
     const [courses, setCourses] = useState<ITraining[]>([]);
 
     const { userSettings } = useAuth();
@@ -56,30 +57,36 @@ function Trainings() {
                             <h2 className="font-semibold dark:text-white hacker text-xl sm:text-3xl mt-[1rem]">Treinamentos Disponíveis</h2>
 
                         </div>
-                        <Button className='mt-auto' color='primary' onClick={() => window.location.href = ROUTE_ADD_COURSE} text=' Adicionar Treinamento' />
+                        <Button className='mt-auto' color='primary' onClick={() => setcreateCourse(!createCourse)} text={createCourse ? 'Ver Treinamentos ' : ' Adicionar Treinamento'} />
 
                     </div>
                     {
-                        courses.length <= 0 ?
-                            <>
-                                <br />
-                                <br />
-                                {renderCardSkeletons()}
+                        createCourse ?
+                            <AddCoursePage />
+                            : <>
+                                {
+                                    courses.length <= 0 ?
+                                        <>
+                                            <br />
+                                            <br />
+                                            {renderCardSkeletons()}
+                                        </>
+                                        :
+                                        <div className="grid 2xl:grid-cols-4 static z-20 mt-[2rem] lg:grid-cols-3 sm:grid-cols-2 lg:gap-8 sm:gap-[1.5rem] gap-[2.5rem]">
+                                            {courses.map((course, index) => (
+                                                <motion.div
+                                                    viewport={{ once: true }}
+                                                    initial={{ opacity: 0, y: 50 }}
+                                                    whileInView={{ opacity: 1, y: 0 }}
+                                                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                                                    key={course.id}
+                                                >
+                                                    <CardComponent showButtonSub={false} dark={true} datas={course} />
+                                                </motion.div>
+                                            ))}
+                                        </div>
+                                }
                             </>
-                            :
-                            <div className="grid 2xl:grid-cols-4 static z-20 mt-[2rem] lg:grid-cols-3 sm:grid-cols-2 lg:gap-8 sm:gap-[1.5rem] gap-[2.5rem]">
-                                {courses.map((course, index) => (
-                                    <motion.div
-                                        viewport={{ once: true }}
-                                        initial={{ opacity: 0, y: 50 }}
-                                        whileInView={{ opacity: 1, y: 0 }}
-                                        transition={{ duration: 0.4, delay: index * 0.1 }}
-                                        key={course.id}
-                                    >
-                                        <CardComponent showButtonSub={false} dark={true} datas={course} />
-                                    </motion.div>
-                                ))}
-                            </div>
                     }
                 </section>
             </div>
