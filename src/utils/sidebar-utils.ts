@@ -14,8 +14,8 @@ export const ROUTE_RESET_PASS = "/reset-password";
 export const ROUTE_LOGIN = "/";
 export const ROUTE_COUPON = "/dashboard/cuppons";
 export const ROUTE_NEWS_ADMIN = "/dashboard/add-news";
-export const ROUTE_MINI_DASHBOARD = "/admin-trans";
-export const ROUTE_ADD_COURSE = "/add-course";
+export const ROUTE_MINI_DASHBOARD = "/dashboard/admin-trans";
+export const ROUTE_ADD_COURSE = "/add-training";
 export const ROUTE_RESET_PASS_CONFIRM = "/reset-password-confirm";
 
 
