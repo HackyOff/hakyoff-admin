@@ -400,10 +400,10 @@ div {
 }
 
 .input_card {
-  @apply w-full border-primary px-2 py-2 my-auto bg-transparent border-2 outline-none;
+  @apply w-full px-2 py-2 my-auto bg-transparent border-2 outline-none border-primary;
 }
 
- 
+
 @keyframes glitchh {
   0% {
     transform: translate(0);
@@ -481,9 +481,14 @@ div {
 .accordion-content {
   padding: 10px;
   border-top: 1px solid #ddd;
-
 }
 
 .lab-bg {
   background: linear-gradient(90deg, #cc9c00, #dfb703e5, #df8e03fa), url('../../assets/bgs/bg-lab-challeng.png');
 }
+
+.form-lab input {
+  @apply outline-none focus-within:border-primary border-2
+}
+
+
