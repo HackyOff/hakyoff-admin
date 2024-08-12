@@ -41,13 +41,11 @@ const TicketPanel = () => {
 
         const emailHtml = ticketEmailTemplate(ticketCode, status, message);
         await sendEmailSupport(studentEmail, subject, emailHtml);
-
-        // Atualiza os tickets após a mudança de status
+ 
         const updatedTickets = await fetchAllTickets();
         setTickets(updatedTickets);
     };
-
-    // Filtra os tickets com base no status selecionado
+ 
     const filteredTickets = statusFilter
         ? tickets.filter(ticket => ticket.status === statusFilter)
         : tickets;
