@@ -46,7 +46,7 @@ const AddCtfForm: React.FC = () => {
     return (
         <form onSubmit={handleAddCtf} className="p-4 bg-white rounded shadow-md">
             <div className="mb-4">
-                <label className="block text-sm font-medium">Módulo</label>
+                <label className="block text-sm font-medium">Título do Módulo</label>
                 <input
                     type="text"
                     value={module}
@@ -116,7 +116,10 @@ const AddCtfForm: React.FC = () => {
                     required
                 />
             </div>
-            <button type="submit" className="px-4 py-2 text-white bg-blue-500 rounded">Adicionar CTF</button>
+            <br />
+            <button type="submit" className="px-4 py-2 font-semibold rounded bg-primary">Adicionar CTF</button>
+            <br />
+            <br />
         </form>
     );
 };
