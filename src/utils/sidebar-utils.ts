@@ -23,7 +23,7 @@ export const ROUTE_RESET_PASS_CONFIRM = "/reset-password-confirm";
 // Importando os ícones
 import { IconType } from "react-icons";
 import { FaBoxTissue, FaHome, FaTicketAlt } from "react-icons/fa";
-import { FaUser } from "react-icons/fa6";
+import { FaFlagCheckered, FaUser } from "react-icons/fa6";
 import { IoNewspaperOutline, IoTicketSharp } from "react-icons/io5";
 import { MdOutlinePlayLesson } from "react-icons/md";
 
@@ -46,14 +46,14 @@ export const SideBarUtils: ISideBar[] = [
     text: "Lab. Virtual",
     icon: FaBoxTissue,
   },
-  
-  /*
- 
+
   {
     link: ROUTE_CTFS,
     text: "CTF",
     icon: FaFlagCheckered,
   },
+  /*
+ 
   {
     link: ROUTE_MY_CERTIFICATES,
     text: "Meus Certificados",
