@@ -16,7 +16,7 @@ export const RandomAlphanumeric = (length: number): string => {
   return result;
 };
 
-export const RANDOM_CODE = Math.floor(Math.random() * 1000000 + 1);
+export const RANDOM_CODE = Math.floor(Math.random() * 1000000000 + 1);
 
 export const NavbarDatas = () => {
   const { t } = useTranslation();
