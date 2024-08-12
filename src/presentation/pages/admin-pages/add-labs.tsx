@@ -1,6 +1,6 @@
 // AddLabForm.tsx
 import { db } from '@/domain/config/firebase';
-import { RANDOM_CODE, RandomAlphanumeric } from '@/domain/config/navbar-config';
+import { RANDOM_CODE_10, RandomAlphanumeric } from '@/domain/config/navbar-config';
 import { IMLab } from '@/domain/models/labs-model';
 import { ICtfsChallenge } from '@/interfaces/ctfs/ctfs-intrface';
 import { ITraining } from '@/interfaces/training/training';
@@ -9,12 +9,13 @@ import React, { useEffect, useMemo, useState } from 'react';
 
 export const AddLabForm: React.FC = () => {
     const [lab, setLab] = useState<Omit<IMLab, 'challenges'> & { challenges: ICtfsChallenge[] }>({
-        lab_id: RANDOM_CODE,
-        course_id: RandomAlphanumeric,
+        lab_id: RANDOM_CODE_10,
+        course_id: '',
         lab_name: '',
         course_name: '',
         challenges: [],
     });
+
 
     const handleLabChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -23,6 +24,20 @@ export const AddLabForm: React.FC = () => {
             [name]: value,
         }));
     };
+
+
+    const handleLabChangeSelect = (courseId: string) => {
+
+        const selectedCourse = courses.find((course) => course.id === courseId);
+        if (selectedCourse) {
+            setLab((prevLab) => ({
+                ...prevLab,
+                course_id: selectedCourse?.id ? selectedCourse?.id : '',
+                course_name: selectedCourse.title,
+            }));
+        }
+    };
+
 
     const handleChallengeChange = (index: number, e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
@@ -56,7 +71,7 @@ export const AddLabForm: React.FC = () => {
             await db.collection('labs').add(lab);
             setLab({
                 lab_id: 0,
-                course_id: 0,
+                course_id: '',
                 lab_name: '',
                 course_name: '',
                 challenges: [],
@@ -87,56 +102,68 @@ export const AddLabForm: React.FC = () => {
     }, [getCoursesMemo]);
 
     return (
-        <form onSubmit={handleSubmit} className="space-y-4 form-lab">
-            <div className="flex flex-col">
-                <label className="mb-1">Lab ID:</label>
-                <input
-                    name="lab_id"
-                    type="number"
-                    disabled
-                    value={lab.lab_id}
-                    onChange={handleLabChange}
-                    className="p-2 border rounded"
-                />
+        <form onSubmit={handleSubmit} className="space-y-4 sm:w-6/12 form-lab">
+            <div className="flex w-full gap-6 flex-column sm:flex-row">
+                <div className="flex flex-col w-full">
+                    <label className="mb-1">Lab ID:</label>
+                    <input
+                        name="lab_id"
+                        type="number"
+                        disabled
+                        value={lab.lab_id}
+                        onChange={handleLabChange}
+                        className="p-2 border border-gray-500 rounded disabled:bg-slate-100"
+                    />
+                </div>
+                <div className="flex flex-col w-full">
+                    <label className="mb-1">Course ID:</label>
+                    <input
+                        name="course_id"
+                        type="text"
+                        disabled
+                        value={lab.course_id}
+                        className="p-2 border border-gray-500 rounded disabled:bg-slate-100"
+                    />
+                </div>
             </div>
-            <div className="flex flex-col">
-                <label className="mb-1">Course ID:</label>
-                <input
-                    name="course_id"
-                    type="number"
-                    value={lab.course_id}
-                    onChange={handleLabChange}
-                    className="p-2 border rounded"
-                />
+            <div className="flex w-full gap-6 flex-column sm:flex-row">
+                <div className="flex flex-col w-full">
+                    <label className="mb-1">Selecionar Curso</label>
+                    <select
+                        className='p-2 outline-none'
+                        onChange={(e) => handleLabChangeSelect(e.target.value)}
+                        name=""
+                        id=""
+                    >
+                        <option value="">Selecionar</option>
+                        {
+                            courses.map((course, i) => (
+                                <option key={i} value={course.id}>{course.title}</option>
+                            ))
+                        }
+                    </select>
+                </div>
+                <div className="flex flex-col w-full">
+                    <label className="mb-1">Lab Name:</label>
+                    <input
+                        name="lab_name"
+                        type="text"
+                        value={lab.lab_name}
+                        onChange={handleLabChange}
+                        className="p-2 border rounded"
+                    />
+                </div>
             </div>
-            <div className="flex flex-col">
-                <label className="mb-1">Lab Name:</label>
-                <input
-                    name="lab_name"
-                    type="text"
-                    value={lab.lab_name}
-                    onChange={handleLabChange}
-                    className="p-2 border rounded"
-                />
-            </div>
-            <div className="flex flex-col">
-                <label className="mb-1">Course Name:</label>
-                <select className='p-2 outline-none' name="" id="">
-                    {
-                        courses.map((e, i) => (
-                            <option key={i} value={e.title} >{e.title}</option>
-                        ))
-                    }
-                </select>
-            </div>
+
 
             <div>
-                <h3 className="text-lg font-semibold">Challenges:</h3>
+                <h3 className="text-lg font-semibold">Desafios:</h3>
+                <br />
                 {lab.challenges.map((challenge, index) => (
-                    <div key={index} className="p-4 mb-2 space-y-2 border rounded">
+                    <div key={index} className="grid gap-5 p-4 mb-2 space-y-2 border rounded sm:grid-cols-2">
 
                         <div className="flex flex-col">
-                            <label className="mb-1">Title:</label>
+                            <label className="mb-1">Titulo:</label>
                             <input
                                 name="title"
                                 type="text"
@@ -168,7 +195,7 @@ export const AddLabForm: React.FC = () => {
                             />
                         </div>
                         <div className="flex flex-col">
-                            <label className="mb-1">Description:</label>
+                            <label className="mb-1">Descrição:</label>
                             <textarea
                                 name="desc"
                                 value={challenge.desc}
@@ -203,13 +230,16 @@ export const AddLabForm: React.FC = () => {
                                 className="p-2 border rounded"
                             />
                         </div>
-                        <button type="button" onClick={() => removeChallenge(index)} className="p-2 mt-2 text-white bg-red-500 rounded">Remove Challenge</button>
+                        <button type="button" onClick={() => removeChallenge(index)} className="p-2 mt-6 text-white bg-red-600 rounded me-auto m">Remove Challenge</button>
                     </div>
                 ))}
-                <button type="button" onClick={addChallenge} className="p-2 text-white bg-blue-500 rounded">Add Challenge</button>
+                <br />
+                <br />
+                <button type="button" onClick={addChallenge} className="p-2 font-semibold text-black rounded bg-primary">Add Desafio</button>
             </div>
 
             <button type="submit" className="p-2 text-white bg-green-500 rounded">Adicionar Lab</button>
+            <br /><br /><br />
         </form >
     );
 };
