@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Transaction } from '../admin-pages/dashboard-transactions';
 import { db } from '@/domain/config/firebase';
 import { getDocs, collectionGroup, doc, getDoc } from 'firebase/firestore';
@@ -67,7 +67,7 @@ const AccordionTable: React.FC<AccordionTableProps> = ({ rejectTransaction, appr
         } else {
             setFilteredTransactions(
                 transactions.filter((transaction) =>
-                    transaction.statusPagamento  === filter.toLowerCase()
+                    transaction.statusPagamento === filter.toLowerCase()
                 )
             );
         }
@@ -85,7 +85,7 @@ const AccordionTable: React.FC<AccordionTableProps> = ({ rejectTransaction, appr
             {isExpanded && (
                 <div className="border border-gray-200 py4">
                     <div className="mb-4">
-                        <button onClick={() => setFilter('')} className={`px-3 py-1 mr-2 ${filter === '' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}>
+                        <button onClick={() => setFilter("Aprovado")} className={`px-3 py-1 mr-2 ${filter === 'Aprovado' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}>
                             Todas
                         </button>
                         <button onClick={() => setFilter('Pendente')} className={`px-3 py-1 mr-2 ${filter === 'Pendente' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}>
