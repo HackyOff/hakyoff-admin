@@ -109,6 +109,29 @@ export const Dashboard: React.FC = () => {
         }
     };
 
+    const rejectTransaction = async (transaction: Transaction) => {
+        try {
+            const transactionRef = doc(db, 'alunos', transaction.studentId, 'courses', transaction.id);
+            await updateDoc(transactionRef, { statusPagamento: 'rejeitado' });
+
+            await AddNotificationsUtils({
+                student_email: transaction.studentEmail || '',
+                user_name: transaction.studentName || '',
+                title: 'Pagamento de Treinamento Rejeitado',
+                content: `O pagamento do Treinamento ${transaction.course_name} foi rejeitado. Por favor, entre em contato para mais informações.`,
+            });
+
+            setTransactions((prev) =>
+                prev.map((trans) => (trans.id === transaction.id ? { ...trans, statusPagamento: 'rejeitado' } : trans))
+            );
+
+            alert('Transação rejeitada com sucesso!');
+        } catch (error) {
+            console.error('Erro ao rejeitar transação:', error);
+            alert('Erro ao rejeitar transação. Por favor, tente novamente mais tarde.');
+        }
+    };
+
 
 
     return (
@@ -119,8 +142,9 @@ export const Dashboard: React.FC = () => {
 
                 <Button onClick={() => window.location.href = ROUTE_HACKING} color='primary' text='Ver todos alunos' />
                 <br />
-                <h1 className="text-2xl font-bold mb-4">Dashboard de Aprovação de Transações</h1>
-               <AccordionTable approveTransaction={approveTransaction} transactions={transactions} />
+                <h1 className="mb-4 text-2xl font-bold">Dashboard de Aprovação de Transações</h1>
+                <AccordionTable approveTransaction={approveTransaction} rejectTransaction={rejectTransaction} transactions={transactions} />
+
                 <hr />
                 <br />
                 <br />
