@@ -4,13 +4,16 @@ import { useState } from 'react';
 import { Navbar } from '../../components/dashboard-components/navbar/navbar';
 import { Sidebar } from '../../components/dashboard-components/sidebar/sidebar';
 import { useAuth } from '@/context/auth-context';
-import { ROUTE_TRAININGS } from '@/utils/sidebar-utils'; 
+import { ROUTE_TRAININGS } from '@/utils/sidebar-utils';
 import { FaCartPlus } from 'react-icons/fa6';
 import { AddLabForm } from '../admin-pages/add-labs';
+import { ListLabs } from '@/presentation/components/dashboard-components/list-labs/list-labs';
+import { Button } from '@/presentation/components';
 
 export const VirtualLabs: React.FC = () => {
 
   document.title = 'Laboratórios Virtuais | HakyOff Academy'
+  const [viewLabs, setViewLabs] = useState(false)
 
   const [isOpen, setIsOpen] = useState(true); // Definir o estado isOpen aqui
   const { userSettings } = useAuth()
@@ -28,8 +31,10 @@ export const VirtualLabs: React.FC = () => {
 
         <br />
         <div className="flex justify-between w-full px-5 py-6 bg-white rounded-lg shadow dark:bg-slate-100/20 dark:text-white">
-          <h2 className="text-2xl font-bold sm:text-3xl hacker">Labs Virtuais</h2>
+          <div className="flex jutsify-between">  <h2 className="text-2xl font-bold sm:text-3xl hacker">Labs Virtuais</h2>
 
+            <Button onClick={() => setViewLabs(!viewLabs)} text={viewLabs ? 'Criar Lab' : ' Ver Labs'} />
+          </div>
           {
             /*
 <Button
@@ -47,9 +52,15 @@ export const VirtualLabs: React.FC = () => {
         </div>
         <br />
 
+        {
+          viewLabs ?
 
-        <AddLabForm />
+            <ListLabs />
+            :
 
+            <AddLabForm />
+
+        }
 
       </div>
     </div>
