@@ -56,7 +56,7 @@ export const Ctfs: React.FC = () => {
             <br />
             <br />
             <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} />
-            <div className={`min-h-screen p-4 sm:pt-20 ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
+            <div className={`min-h-screen p-4 sm:pt-6 ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
                 <h2 className='mt-4 text-2xl font-bold tracking-wider sm:text-4xl hacker dark:text-white'>Desafios CTFS</h2>
                 <FilterBar filters={filters} setFilters={setFilters} setCreateCtf={setCreateCtf} createCtf={createCtf} />
                 {loading ? renderTicketSkeletons() : <CtfList ctfs={filteredCtfs} createCtf={createCtf} />}
