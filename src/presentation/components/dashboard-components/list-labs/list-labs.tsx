@@ -5,7 +5,7 @@ import { IMLab } from '@/domain/models/labs-model';
 import { icons, svgs } from '@/utils/image-exporter';
 import { renderLabsSkeletons } from '../../../../utils/skeleton-labs';
 import { FaFilter, FaTrash } from 'react-icons/fa6';
-import { ROUTE_TRAININGS } from '../../../../utils/sidebar-utils';
+import { ROUTE_TRAININGS, ROUTE_VIRTUAL_LABS } from '../../../../utils/sidebar-utils';
 import { AlertUtils } from '@/utils/alert-utils';
 
 export const ListLabs: React.FC = () => {
@@ -59,7 +59,7 @@ export const ListLabs: React.FC = () => {
 
           <div className="grid gap-8 2xl:grid-cols-4">
             {labs.map((lab) => (
-              <div key={lab.lab_id} className="relative items-center max-w-full px-4 py-5 transition-all bg-white border rounded-lg shadow-md cursor-pointer dark:bg-slate-100/10 hacker dark:border-white/40 hacker-div">
+              <div onClick={() => window.location.href = ROUTE_VIRTUAL_LABS + '/' + lab.lab_id} key={lab.lab_id} className="relative items-center max-w-full px-4 py-5 transition-all bg-white border rounded-lg shadow-md cursor-pointer dark:bg-slate-100/10 hacker dark:border-white/40 hacker-div">
                 <img src={icons.lab} className='absolute w-[7em] dark:opacity-[.2] opacity-[.03]' alt="" />
                 <div className="flex flex-wrap justify-between">
                   <div className='mb-2'>
@@ -91,6 +91,6 @@ export const ListLabs: React.FC = () => {
             </h2>
           </div>
       }
-    </div>
+    </div >
   );
 };
