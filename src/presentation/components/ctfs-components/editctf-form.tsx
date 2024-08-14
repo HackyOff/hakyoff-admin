@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ICtfs } from '@/interfaces/ctfs/ctfs-intrface';
+import { ICtfs, ICtfsChallenge } from '@/interfaces/ctfs/ctfs-intrface';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import { Button } from '@/presentation/components';
@@ -7,9 +7,11 @@ import { Button } from '@/presentation/components';
 interface EditCtfFormProps {
     ctfId: string;
     onClose: () => void;
+    challenge?: ICtfsChallenge
+    index?: number;
 }
 
-export const EditCtfForm: React.FC<EditCtfFormProps> = ({ ctfId, onClose }) => {
+export const EditCtfForm: React.FC<EditCtfFormProps> = ({ ctfId, onClose, challenge, index }) => {
     const [ctfData, setCtfData] = useState<ICtfs | null>(null);
 
     useEffect(() => {
@@ -40,23 +42,61 @@ export const EditCtfForm: React.FC<EditCtfFormProps> = ({ ctfId, onClose }) => {
         }
     };
 
+    const handleChallengeChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, field: string) => {
+        if (ctfData && index !== undefined) {
+            const updatedChallenges = [...ctfData.ctf];
+            updatedChallenges[index] = { ...updatedChallenges[index], [field]: e.target.value };
+            setCtfData({ ...ctfData, ctf: updatedChallenges });
+        }
+    };
+
     if (!ctfData) {
         return <div>Carregando...</div>;
     }
 
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Módulo</label>
-                <input
-                    type="text"
-                    value={ctfData.module}
-                    onChange={(e) => setCtfData({ ...ctfData, module: e.target.value })}
-                    className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm dark:bg-slate-100/10 dark:text-white"
-                />
-            </div>
-            {/* Continue preenchendo os outros campos */}
+            {!challenge && (
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Módulo</label>
+                    <input
+                        type="text"
+                        value={ctfData.module}
+                        onChange={(e) => setCtfData({ ...ctfData, module: e.target.value })}
+                        className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm dark:bg-slate-100/10 dark:text-white"
+                    />
+                </div>
+            )}
+
+            {challenge && (
+                <div>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Título do Desafio</label>
+                    <input
+                        type="text"
+                        value={challenge.title}
+                        onChange={(e) => handleChallengeChange(e, 'title')}
+                        className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm dark:bg-slate-100/10 dark:text-white"
+                    />
+
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Descrição</label>
+                    <textarea
+                        value={challenge.desc}
+                        onChange={(e) => handleChallengeChange(e, 'desc')}
+                        className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm dark:bg-slate-100/10 dark:text-white"
+                    />
+
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-200">Nível</label>
+                    <input
+                        type="text"
+                        value={challenge.level}
+                        onChange={(e) => handleChallengeChange(e, 'level')}
+                        className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm dark:bg-slate-100/10 dark:text-white"
+                    />
+                </div>
+            )}
+
             <Button text="Salvar Alterações" type="submit" color="primary" />
+            <Button text="Cancelar" type="button" onClick={onClose} />
         </form>
     );
 };
