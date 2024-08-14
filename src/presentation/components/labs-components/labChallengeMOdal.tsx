@@ -13,8 +13,8 @@ interface LabChallengeModalProps {
     isOpen: boolean;
     onClose: () => void;
     onSubmitFlag: (flag: string) => void;
-    onEdit: () => void;
-    onDelete: () => void;
+    onEdit: (challenge: ICtfsChallenge) => void;
+    onDelete: (challenge: ICtfsChallenge) => void;
     loading: boolean;
     msg: string;
 }
@@ -30,9 +30,8 @@ export const LabChallengeModal: React.FC<LabChallengeModalProps> = ({
     msg,
 }) => {
     const [flag, setFlag] = useState('');
-    const { currentUser } = useAuth();
 
-    const isAdmin = true; // Verifica se o usuário é admin
+    const { currentUser } = useAuth();
 
     const handleFlagSubmit = () => {
         onSubmitFlag(flag);
@@ -67,24 +66,27 @@ export const LabChallengeModal: React.FC<LabChallengeModalProps> = ({
                     </span>
                 </div>
             )}
-            {isAdmin ? (
-                <div className="flex gap-4 mt-4">
-                    <Button text='Editar' color='secondary' className='flex items-center click' onClick={onEdit}>
-                        <FaEdit className='my-auto mr-2' /> Editar
-                    </Button>
-                    <Button text='Deletar' color='danger' className='flex items-center click' onClick={onDelete}>
-                        <FaTrash className='my-auto mr-2' /> Deletar
-                    </Button>
-                </div>
-            ) : (
-                <div className="text-end mt-7">
-                    {loading ? (
-                        <LoaderText text='Verificando sua flag.' />
-                    ) : (
-                        <Button disabled={msg === 'right'} text='Submeter' color='primary' className='text-xs text-black click sm:text-md ms-auto' onClick={handleFlagSubmit} />
-                    )}
-                </div>
-            )}
+            <input
+                type="text"
+                value={flag}
+                onChange={(e) => setFlag(e.target.value)}
+                className='w-full px-2 py-2 text-xs text-black border-2 rounded-md outline-none sm:text-md focus-within:border-primary'
+                placeholder='Insira a flag capturada'
+            />
+            <br />
+            <div className="text-end mt-7">
+                {loading ? (
+                    <LoaderText text='Verificando sua flag.' />
+                ) : (
+                    <Button disabled={msg === 'right'} text='Submeter' color='primary' className='text-xs text-black click sm:text-md ms-auto' onClick={handleFlagSubmit} />
+                )}
+                {currentUser && ( // Verifica se o usuário é admin
+                    <div className="flex gap-4 mt-4">
+                        <Button text='Editar' color='secondary' className='text-xs text-black click sm:text-md' onClick={() => onEdit(challenge)} rightIcon={FaEdit} />
+                        <Button text='Excluir' color='danger' className='text-xs text-black click sm:text-md' onClick={() => onDelete(challenge)} rightIcon={FaTrash} />
+                    </div>
+                )}
+            </div>
         </HakyModalDefault>
     );
 };
