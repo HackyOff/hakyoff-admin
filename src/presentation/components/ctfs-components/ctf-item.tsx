@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { ICtfs } from '@/interfaces/ctfs/ctfs-intrface';
 import { abbreviateText } from '@/utils/abreviate';
 import firebase from 'firebase/compat/app';
-import { FaTrash } from 'react-icons/fa6';
+import { FaTrash, } from 'react-icons/fa6';
+import { FaEdit } from 'react-icons/fa';
 import { AlertUtils } from '@/utils/alert-utils';
 import { EditCtfForm } from './editctf-form';
-import { FaEdit } from 'react-icons/fa';
 
 interface CtfItemProps {
     ctf: ICtfs;
@@ -14,6 +14,7 @@ interface CtfItemProps {
 
 export const CtfItem: React.FC<CtfItemProps> = ({ ctf }) => {
     const [isEditing, setIsEditing] = useState(false);
+    const [editingChallengeIndex, setEditingChallengeIndex] = useState<number | null>(null);
 
     const handleDelete = async () => {
         try {
@@ -25,12 +26,28 @@ export const CtfItem: React.FC<CtfItemProps> = ({ ctf }) => {
         }
     };
 
+    const handleChallengeDelete = async (index: number) => {
+        const updatedCtfs = ctf.ctf.filter((_, i) => i !== index);
+        try {
+            await firebase.firestore().collection('ctfs').doc(ctf.id).update({ ctf: updatedCtfs });
+            AlertUtils.success('Desafio excluído com sucesso');
+        } catch (error) {
+            AlertUtils.error('Ocorreu um erro ao excluir o desafio');
+            console.error('Erro ao excluir o desafio:', error);
+        }
+    };
+
     const handleEdit = () => {
         setIsEditing(true);
     };
 
+    const handleChallengeEdit = (index: number) => {
+        setEditingChallengeIndex(index);
+    };
+
     const handleCloseEdit = () => {
         setIsEditing(false);
+        setEditingChallengeIndex(null);
     };
 
     return (
@@ -63,11 +80,34 @@ export const CtfItem: React.FC<CtfItemProps> = ({ ctf }) => {
                         {ctf.ctf.map((challenge, i) => (
                             <div key={i} className="flex items-center justify-between mt-2">
                                 <div>
-                                    <h4 className="text-lg font-semibold dark:text-white">{challenge.title}</h4>
-                                    <p className="text-gray-500 dark:text-gray-400">{abbreviateText(challenge.desc, 80)}</p>
+                                    {editingChallengeIndex === i ? (
+                                        <EditCtfForm
+                                            ctfId={ctf.id}
+                                            challenge={challenge}
+                                            index={i}
+                                            onClose={handleCloseEdit}
+                                        />
+                                    ) : (
+                                        <>
+                                            <h4 className="text-lg font-semibold dark:text-white">{challenge.title}</h4>
+                                            <p className="text-gray-500 dark:text-gray-400">{abbreviateText(challenge.desc, 80)}</p>
+                                        </>
+                                    )}
                                 </div>
-                                <div className="text-gray-500 dark:text-gray-400">
-                                    <span>{challenge.level}</span>
+                                <div className="flex items-center text-gray-500 dark:text-gray-400">
+                                    <span className="mr-4">{challenge.level}</span>
+                                    <button
+                                        className="mr-4 text-blue-500 hover:text-blue-700"
+                                        onClick={() => handleChallengeEdit(i)}
+                                    >
+                                        <FaEdit />
+                                    </button>
+                                    <button
+                                        className="text-red-500 hover:text-red-700"
+                                        onClick={() => handleChallengeDelete(i)}
+                                    >
+                                        <FaTrash />
+                                    </button>
                                 </div>
                             </div>
                         ))}
