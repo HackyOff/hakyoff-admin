@@ -5,6 +5,7 @@ import { db, storage } from '@/domain/config/firebase';
 import { ITrainer } from '@/interfaces/trainer/trainer';
 import { Module, Lesson, Material, ITBenefits } from '@/interfaces/training/training';
 import { AlertUtils } from '@/utils/alert-utils';
+import { ROUTE_TRAINERS } from '@/utils/sidebar-utils';
 
 interface AddCourseProps { }
 
@@ -211,23 +212,26 @@ export const AddCoursePage: React.FC<AddCourseProps> = () => {
               <option value="Disponível">Disponível</option>
             </select>
           </label>
-          <label className="block mt-4">
-            <span className="text-gray-700">Instrutor:</span>
-            <select
-              value={selectedTrainer?.name} // Define o value como selectedTrainer?.id
-              onChange={(e) => {
-                const selectedName = e.target.value;
-                const selected = trainers.find(trainer => trainer.name === selectedName) || null;
-                setSelectedTrainer(selected); // Atualiza o estado com o instrutor selecionado
-              }}
-              className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-            >
-              <option value="">Selecione um instrutor</option>
-              {trainers.map(trainer => (
-                <option key={trainer.id} value={trainer.id}>{trainer.name}</option> // Valor é o ID do instrutor
-              ))}
-            </select>
-          </label>
+          <div>
+            <label className="block mt-4">
+              <span className="text-gray-700">Instrutor:</span>
+              <select
+                value={selectedTrainer?.name} // Define o value como selectedTrainer?.id
+                onChange={(e) => {
+                  const selectedName = e.target.value;
+                  const selected = trainers.find(trainer => trainer.name === selectedName) || null;
+                  setSelectedTrainer(selected); // Atualiza o estado com o instrutor selecionado
+                }}
+                className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              >
+                <option value="">Selecione um instrutor</option>
+                {trainers.map(trainer => (
+                  <option key={trainer.id} value={trainer.id}>{trainer.name}</option> // Valor é o ID do instrutor
+                ))}
+              </select>
+            </label>
+            <span className="text-sm text-gray-500">Não encontrou o formador deste curso ? <a href={ROUTE_TRAINERS} className="text-blue-600 underline">adicione aqui</a></span>
+          </div>
           <label className="block">
             <br />
             <span className="text-gray-700">Capa do Treinamento:</span>
