@@ -60,7 +60,7 @@ export const ListLabs: React.FC = () => {
           <div className="grid gap-8 2xl:grid-cols-4">
             {labs.map((lab) => (
               <div onClick={() => window.location.href = ROUTE_VIRTUAL_LABS + '/' + lab.lab_id} key={lab.lab_id} className="relative items-center max-w-full px-4 py-5 transition-all bg-white border rounded-lg shadow-md cursor-pointer dark:bg-slate-100/10 hacker dark:border-white/40 hacker-div">
-                <img src={icons.lab} className='absolute w-[7em] dark:opacity-[.2] opacity-[.03]' alt="" />
+                <img src={icons.lab} className='absolute  w-[7em] dark:opacity-[.2] opacity-[.03]' alt="" />
                 <div className="flex flex-wrap justify-between">
                   <div className='mb-2'>
                     <h2 className="text-4xl font-bold text-yellow-700 sm:text-4xl dark:text-primary hacker">{lab.lab_name} </h2>
