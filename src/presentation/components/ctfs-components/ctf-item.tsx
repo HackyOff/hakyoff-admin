@@ -78,7 +78,7 @@ export const CtfItem: React.FC<CtfItemProps> = ({ ctf }) => {
                     </div>
                     <div className="mt-4">
                         {ctf.ctf.map((challenge, i) => (
-                            <div key={i} className="flex items-center justify-between mt-2">
+                            <div key={i} className="flex items-center justify-between px-2 my-1 mt-2 bg-slate-50">
                                 <div>
                                     {editingChallengeIndex === i ? (
                                         <EditCtfForm
