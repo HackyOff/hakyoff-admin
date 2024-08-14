@@ -57,7 +57,7 @@ export function AppRoutes() {
         <Route path="/soon" element={<SoonPage />} />
         <Route path="/admin-ctf" element={<AddCtfForm />} />
         <Route path={ROUTE_MINI_DASHBOARD} element={<TransactionDashboard />} />
-        <Route path="/admin-labs" element={<AddLabForm />} />
+        <Route path="/admin-labss" element={<AddLabForm />} />
         <Route path="/" element={<LoginPage />} />
         <Route path="/add-cupom" element={<CouponForm />} />
         <Route path="/add-trainer" element={<AddTrainerPage />} />
