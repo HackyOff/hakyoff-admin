@@ -2,6 +2,7 @@
 import { ICtfsChallenge } from "@/interfaces/ctfs/ctfs-intrface";
 
 export interface IMLab {
+  id?: any
   lab_id: any;
   course_id: string;
   lab_name: string;
