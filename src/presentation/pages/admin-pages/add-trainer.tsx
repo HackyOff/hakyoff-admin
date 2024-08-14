@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from 'react';
 import { addDoc, collection, getDocs } from 'firebase/firestore'; // Importe getDocs para consultar a coleção
 import { ITrainer } from '@/interfaces/trainer/trainer';
@@ -84,8 +85,8 @@ const AddTrainerPage: React.FC<AddTrainerProps> = () => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto px-4 py-8">
-            <h1 className="text-3xl font-bold mb-4">Adicionar Formador</h1>
+        <div className="max-w-4xl px-4 py-8 mx-auto">
+            <h1 className="mb-4 text-3xl font-bold">Adicionar Formador</h1>
             <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                     <label className="block">
@@ -94,7 +95,7 @@ const AddTrainerPage: React.FC<AddTrainerProps> = () => {
                             type="text"
                             value={trainerName}
                             onChange={(e) => setTrainerName(e.target.value)}
-                            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
                     </label>
                     <label className="block">
@@ -103,7 +104,7 @@ const AddTrainerPage: React.FC<AddTrainerProps> = () => {
                             type="text"
                             value={trainerRole}
                             onChange={(e) => setTrainerRole(e.target.value)}
-                            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
                     </label>
                     <label className="block">
@@ -112,7 +113,7 @@ const AddTrainerPage: React.FC<AddTrainerProps> = () => {
                             type="file"
                             accept="image/*"
                             onChange={handlePictureChange}
-                            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                            className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                         />
                         {trainerPictureUrl && (
                             <img src={trainerPictureUrl} alt="Preview" className="mt-2 rounded-md shadow-sm" style={{ maxWidth: '100%' }} />
@@ -120,7 +121,7 @@ const AddTrainerPage: React.FC<AddTrainerProps> = () => {
                     </label>
                 </div>
 
-                <button onClick={handleAddTrainer} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <button onClick={handleAddTrainer} className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700">
                     Adicionar Formador
                 </button>
             </form>
@@ -128,14 +129,14 @@ const AddTrainerPage: React.FC<AddTrainerProps> = () => {
             <hr className="my-8" />
 
             <div>
-                <h2 className="text-2xl font-bold mb-4">Lista de Formadores</h2>
+                <h2 className="mb-4 text-2xl font-bold">Lista de Formadores</h2>
                 <ul className="space-y-4">
                     {trainers.map(trainer => (
-                        <li key={trainer.id} className="border gap-6 flex p-4 rounded-md shadow-sm">
+                        <li key={trainer.id} className="flex gap-6 p-4 border rounded-md shadow-sm">
                             {trainer.picture && (
-                                <img src={trainer.picture} alt={trainer.name} className="mt-2 rounded-md w-16 shadow-sm" style={{ maxWidth: '100px' }} />
+                                <img src={trainer.picture} alt={trainer.name} className="w-16 mt-2 rounded-md shadow-sm" style={{ maxWidth: '100px' }} />
                             )}
-                            <div className='text-2xl my-auto '>
+                            <div className='my-auto text-2xl '>
                                 <p className="font-bold">{trainer.name}</p>
                                 <p className="text-gray-600">{trainer.role}</p>
                             </div>
