@@ -170,7 +170,7 @@ export const TrainingDetail: React.FC = () => {
             <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} />
             <div className={`min-h-screen p-4 pt-20 ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
                 <div className="flex gap-4">
-                    <div className="relative w-full p-4 bg-white dark:bg-slate-100/10 rounded-lg">
+                    <div className="relative w-full p-4 bg-white rounded-lg dark:bg-slate-100/10">
                         <div className="flex justify-between">
                             <HakyOffSquare />
 
@@ -182,21 +182,23 @@ export const TrainingDetail: React.FC = () => {
                                     handleBuyCourse={handleBuyCourse}
                                 />
                             ))}
-                            {
-                                mycourses.length === 0 && <button onClick={handleBuyCourse} className='px-6 py-2 font-semibold rounded-md hacker click bg-primary'>
-                                    Comprar
-                                </button>
-                            }
+                            <div className="hidden">
+                                {
+                                    mycourses.length === 0 && <button onClick={handleBuyCourse} className='px-6 py-2 font-semibold rounded-md hacker click bg-primary'>
+                                        Comprar
+                                    </button>
+                                }
+                            </div>
 
                         </div>
-                        <h2 className="mt-4 text-3xl dark:text-white font-bold hacker text-">
+                        <h2 className="mt-4 text-3xl font-bold dark:text-white hacker text-">
                             {course?.title}
                         </h2>
                         <br />
                         <br />
                         <CustomVideoPlayerDash src={course?.link ? course?.link : ''} />
                     </div>
-                    <div className="w-5/12 px-4 py-3 bg-white dark:bg-slate-100/10 dark:text-white rounded-md">
+                    <div className="w-5/12 px-4 py-3 bg-white rounded-md dark:bg-slate-100/10 dark:text-white">
                         <TabsComponent tabs={tabs} />
                     </div>
                 </div>
@@ -207,12 +209,12 @@ export const TrainingDetail: React.FC = () => {
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
                     <div className="w-[38em] h-[30.5rem] z-100 p-8 dark:bg-slate-700 dark:border dark:border-white/50 dark:text-white bg-white rounded-lg">
                         <h2 className="mb-4 text-2xl font-bold hacker">Escolha o método de pagamento</h2>
-                        <p className=" hacker mb-3 ">Preço do Treinamento: <b>{discount ? <> {calculateDiscountedPrice(discountt, course?.price ? course?.price : 0)} - <span className='line-through text-red-400'> {formatMoney(course?.price ? course?.price : 0)}</span></> : formatMoney(course?.price ? course?.price : 0)}</b></p>
+                        <p className="mb-3  hacker">Preço do Treinamento: <b>{discount ? <> {calculateDiscountedPrice(discountt, course?.price ? course?.price : 0)} - <span className='text-red-400 line-through'> {formatMoney(course?.price ? course?.price : 0)}</span></> : formatMoney(course?.price ? course?.price : 0)}</b></p>
                         {discount
                             ?
 
                             <>
-                                <span className="text-gray-700 text-xs dark:text-white/70"> Foi aplicado um desconto de {discount}% </span>
+                                <span className="text-xs text-gray-700 dark:text-white/70"> Foi aplicado um desconto de {discount}% </span>
                             </>
                             : null
 
@@ -222,10 +224,10 @@ export const TrainingDetail: React.FC = () => {
 
                                 <>
                                     <center>
-                                        <FaCheckCircle className='text-8xl text-green-400' />
+                                        <FaCheckCircle className='text-green-400 text-8xl' />
 
                                         <br />
-                                        <p className="text-gray-600 dark:text-white">Seu pagamento para o treinamento <b className='hacker underline'>{course?.title}</b> foi submetido com sucesso, verifique em   <a className='text-yellow-600 hacker  underline' href={ROUTE_MY_TRAININGS}>seus treinaentos</a></p>
+                                        <p className="text-gray-600 dark:text-white">Seu pagamento para o treinamento <b className='underline hacker'>{course?.title}</b> foi submetido com sucesso, verifique em   <a className='text-yellow-600 underline hacker' href={ROUTE_MY_TRAININGS}>seus treinaentos</a></p>
                                         <br />
                                         <center>
 
@@ -243,7 +245,7 @@ export const TrainingDetail: React.FC = () => {
                                     {
                                         !discount &&
                                         <div className="mb-4">
-                                            <label htmlFor="coupon-code" className="block text-sm font-medium text-gray-700 mb-2">Tem algum código de desconto ?</label>
+                                            <label htmlFor="coupon-code" className="block mb-2 text-sm font-medium text-gray-700">Tem algum código de desconto ?</label>
                                             <div className="flex gap-2 mb-6">
                                                 <FaGift className='my-auto ' />
                                                 <input
@@ -251,7 +253,7 @@ export const TrainingDetail: React.FC = () => {
                                                     id="coupon-code"
                                                     value={couponCode}
                                                     onChange={(e) => setCouponCode(e.target.value)}
-                                                    className="input_card text-xs"
+                                                    className="text-xs input_card"
                                                     placeholder="Insira seu cupom"
                                                 />
                                                 <Button text='Aplicar' className='text-xs' onClick={validateAndApplyCoupon} color='primary' />
@@ -289,29 +291,29 @@ export const TrainingDetail: React.FC = () => {
                                     {paymentMethod === 'transfer' && (
                                         <div>
                                             <div className="flex gap-2">
-                                                <div className='w-full  text-sm'>
-                                                    <div className="flex pe-4 justify-between gap-3">
+                                                <div className='w-full text-sm'>
+                                                    <div className="flex justify-between gap-3 pe-4">
                                                         <b>Titular:</b>
                                                         <span>HakyOff Company</span>
                                                     </div>
-                                                    <div className="flex pe-4 justify-between gap-3">
+                                                    <div className="flex justify-between gap-3 pe-4">
                                                         <b>IBAN:</b>
                                                         <span>2345.4523.2343.4354.4</span>
                                                     </div>
-                                                    <div className="flex pe-4 justify-between gap-3">
+                                                    <div className="flex justify-between gap-3 pe-4">
                                                         <b>Banco:</b>
                                                         <span className='font-bold'>BAI</span>
                                                     </div>
-                                                    <div className="bg-orange-100 mb-3 text-orange-700 rounded-md mt-3 me-4 p-2 text-xs">
+                                                    <div className="p-2 mt-3 mb-3 text-xs text-orange-700 bg-orange-100 rounded-md me-4">
                                                         <b className='text-orange-800'>Nota:</b> A aprovação do seu pedido pode levar até 24 horas úteis.
                                                     </div>
                                                 </div>
-                                                <div className="flex w-full items-center justify-center">
+                                                <div className="flex items-center justify-center w-full">
                                                     <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-[9rem] border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-gray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                                                         {file ? (
                                                             <div className="relative w-full h-full overflow-hidden">
                                                                 {file.type.includes('image') ? (
-                                                                    <img src={URL.createObjectURL(file)} className="w-full h-full object-cover" alt="Preview do arquivo" />
+                                                                    <img src={URL.createObjectURL(file)} className="object-cover w-full h-full" alt="Preview do arquivo" />
                                                                 ) : (
                                                                     <div className="flex items-center justify-center w-full h-full bg-gray-300 dark:bg-gray-600">
                                                                         <svg className="w-8 h-8 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -319,7 +321,7 @@ export const TrainingDetail: React.FC = () => {
                                                                         </svg>
                                                                     </div>
                                                                 )}
-                                                                <button onClick={() => setFile(null)} className="absolute top-2 right-2 rounded-full bg-gray-200 dark:bg-gray-700 p-1 hover:bg-gray-300 dark:hover:bg-gray-600">
+                                                                <button onClick={() => setFile(null)} className="absolute p-1 bg-gray-200 rounded-full top-2 right-2 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600">
                                                                     <svg className="w-4 h-4 text-gray-600 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                                                         <path fillRule="evenodd" d="M10 1a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM5.293 5.293a1 1 0 0 1 1.414 0L10 8.586l3.293-3.293a1 1 0 0 1 1.414 1.414L11.414 10l3.293 3.293a1 1 0 1 1-1.414 1.414L10 11.414l-3.293 3.293a1 1 0 1 1-1.414-1.414L8.586 10 5.293 6.707a1 1 0 0 1 0-1.414z" clipRule="evenodd" />
                                                                     </svg>
@@ -358,7 +360,7 @@ export const TrainingDetail: React.FC = () => {
                                     !submited && <>
 
 
-                                        <button onClick={() => { setShowPaymentModal(false), setSubmited(false) }} className="px-4 py-2 hover:text-white dark:text-red-300 text-red-700 border-2 border-red-500 rounded-md hacker hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">
+                                        <button onClick={() => { setShowPaymentModal(false), setSubmited(false) }} className="px-4 py-2 text-red-700 border-2 border-red-500 rounded-md hover:text-white dark:text-red-300 hacker hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">
                                             Cancelar
                                         </button>
 
@@ -391,7 +393,7 @@ const CourseButton: React.FC<CourseProps> = ({ course, mycourses, handleBuyCours
         <div className="course-button-container">
             {isCourseIncluded ? (
                 course?.statusPagamento === 'aprovado' ? (
-                    <button className='px-14 py-2 cursor-default font-semibold hacker  bg-green-300'>
+                    <button className='py-2 font-semibold bg-green-300 cursor-default px-14 hacker'>
                         Comprado
                     </button>
                 ) : (
