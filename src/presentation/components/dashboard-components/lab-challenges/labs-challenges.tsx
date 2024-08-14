@@ -166,7 +166,10 @@ export const LabChallenges: React.FC = () => {
 
                 <div className={`min-h-screen p-4 sm:pt-20 ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
                     <div className="flex-grow p-6">
-                        <h1 className="text-2xl font-bold">Laboratório Virtual: {lab?.lab_name}</h1>
+                        <h1 className="text-2xl font-bold"><span className="hacker">Laboratório Virtual:</span> {lab?.lab_name}</h1>
+
+                        <br />
+                        <br />
                         <LabChallengeList
                             challenges={lab?.challenges ?? []}
                             userCtfs={userCtfs}
