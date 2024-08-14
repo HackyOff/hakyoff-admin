@@ -11,6 +11,7 @@ export interface ICtfsChallenge {
 }
 
 export type ICtfs = {
+  id: any
   level: any;
   ctf_code: number;
   module: string;
