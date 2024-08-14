@@ -69,13 +69,12 @@ export const LabChallenges: React.FC = () => {
 
     const handleSubmitFlag = async (flag: string) => {
         if (!selectedLabChallenge || !currentUser) return;
-        setLoadingC(true)
+        setLoadingC(true);
 
         if (flag === selectedLabChallenge.flag) {
             try {
                 // Atualiza a subcoleção de CTFs resolvidos do usuário
                 const userCtfsCollection = firebase.firestore().collection('admins').doc(currentUser.uid).collection('resolvedChallengesLab');
-
 
                 if (typeof selectedLabChallenge.id === 'string') {
                     await userCtfsCollection.doc(selectedLabChallenge.id).set({
@@ -106,44 +105,66 @@ export const LabChallenges: React.FC = () => {
 
                         setUserCtfs([...userCtfs, selectedLabChallenge.id]);
 
-                        setLoadingC(false)
-                        setMsg('right')
-                        AlertUtils.success('Parabés ' + currentUser.displayName?.split(' ').pop() + ' , você conseguiiu resolver este desafio!')
+                        setLoadingC(false);
+                        setMsg('right');
+                        AlertUtils.success('Parabéns ' + currentUser.displayName?.split(' ').pop() + ' , você conseguiu resolver este desafio!');
                         //  closeModal();
                     } else {
-
-                        setLoadingC(false)
+                        setLoadingC(false);
                         console.error('Nenhum documento encontrado na coleção hacking para o usuário:', currentUser.email);
                         alert('Erro ao atualizar a pontuação. Tente novamente.');
                     }
                 } else {
-                    setLoadingC(false)
+                    setLoadingC(false);
                     console.error('selectedLabChallenge.id não é uma string:', selectedLabChallenge.id);
                     alert('Erro ao submeter a flag. Tente novamente.');
                 }
             } catch (error) {
-                setLoadingC(false)
+                setLoadingC(false);
                 console.error('Erro ao atualizar os CTFs resolvidos do usuário:', error);
                 alert('Erro ao submeter a flag. Tente novamente.');
             }
         } else {
-            setMsg('wrong')
-            setLoadingC(false)
+            setMsg('wrong');
+            setLoadingC(false);
             setTimeout(() => {
-                setMsg('')
+                setMsg('');
             }, 6000);
+        }
+    };
+
+    const handleEditChallenge = async (challenge: ICtfsChallenge) => {
+        console.log(challenge)
+        // Redireciona para a página de edição do desafio
+        //history.push(`/edit-challenge/${challenge.id}`);
+    };
+
+    const handleDeleteChallenge = async (challenge: ICtfsChallenge) => {
+        if (window.confirm('Tem certeza de que deseja excluir este desafio?')) {
+            try {
+                // Exclui o desafio da coleção
+                await db.collection('labs').doc(labId ?? '').collection('challenges').doc(challenge.id).delete();
+                AlertUtils.success('Desafio excluído com sucesso!');
+                // Atualiza a lista de desafios
+                setLab(prevLab => ({
+                    ...prevLab!,
+                    challenges: prevLab?.challenges.filter(ch => ch.id !== challenge.id) ?? []
+                }));
+                closeModal();
+            } catch (error) {
+                console.error('Erro ao excluir o desafio:', error);
+                alert('Erro ao excluir o desafio. Tente novamente.');
+            }
         }
     };
 
     return (
         <>
-
             <div className="">
                 <Navbar />
                 <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen} /> {/* Passar isOpen para Sidebar */}
 
                 <div className={`min-h-screen p-4 sm:pt-20 ${isOpen ? 'sm:ml-[10rem]' : 'sm:ml-[4rem]'} transition-all duration-300 bg-gray-100 dark:bg-gray-900`}>
-                    
                     <div className="flex-grow p-6">
                         <h1 className="text-2xl font-bold">Laboratório Virtual: {lab?.lab_name}</h1>
                         <LabChallengeList
@@ -159,6 +180,8 @@ export const LabChallenges: React.FC = () => {
                 isOpen={isModalOpen}
                 onClose={closeModal}
                 onSubmitFlag={handleSubmitFlag}
+                onEdit={handleEditChallenge}
+                onDelete={handleDeleteChallenge}
                 loading={loadingC}
                 msg={msg}
             />
