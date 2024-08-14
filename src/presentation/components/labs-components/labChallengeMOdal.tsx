@@ -82,7 +82,7 @@ export const LabChallengeModal: React.FC<LabChallengeModalProps> = ({
                 )}
                 {currentUser && ( // Verifica se o usuário é admin
                     <div className="flex gap-4 mt-4">
-                        <Button text='Editar' color='secondary' className='text-xs text-black click sm:text-md' onClick={() => onEdit(challenge)} rightIcon={FaEdit} />
+                        <Button text='Editar' color='secondary' className='hidden text-xs text-black click sm:text-md' onClick={() => onEdit(challenge)} rightIcon={FaEdit} />
                         <Button text='Excluir' color='danger' className='text-xs text-black click sm:text-md' onClick={() => onDelete(challenge)} rightIcon={FaTrash} />
                     </div>
                 )}
