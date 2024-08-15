@@ -84,7 +84,7 @@ const AccordionTable: React.FC<AccordionTableProps> = ({ rejectTransaction, appr
 
             {isExpanded && (
                 <div className="border border-gray-200 py4">
-                    <div className="mb-4">
+                    <div className="hidden mb-4">
                         <button onClick={() => setFilter("Aprovado")} className={`px-3 py-1 mr-2 ${filter === 'Aprovado' ? 'bg-blue-500 text-white' : 'bg-gray-200'}`}>
                             Todas
                         </button>
@@ -126,12 +126,12 @@ const AccordionTable: React.FC<AccordionTableProps> = ({ rejectTransaction, appr
                                     <td className="px-4 py-2 text-xs capitalize border-b">
                                         {transaction.boletoFile && (
                                             <a href={transaction.boletoFile} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
-                                                Ver Comprovante
+                                                Comprovativo
                                             </a>
                                         )}
                                     </td>
                                     <td className="px-4 py-2 text-xs border-b">
-                                        {transaction.statusPagamento === 'Pendente' && (
+                                        {transaction.statusPagamento === 'pendente' && (
                                             <div className='flex gap-2'>
                                                 <button
                                                     onClick={() => approveTransaction(transaction)}
